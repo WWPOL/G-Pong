@@ -29,3 +29,7 @@ Paddle.prototype.getX = function() {
 Paddle.prototype.getY = function() {
 	return this.y;
 }
+
+Paddle.prototype.setY = function(y) {
+	this.y = y;
+}
