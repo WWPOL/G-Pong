@@ -50,6 +50,18 @@ Ball.prototype.getMovement = function(){
 	return this.movement;
 };
 
+Ball.prototype.ballReset = function(){
+	this.x = (1280/2) - this.radius;
+	this.y = (720/2) - this.radius;
+	this.movement = new Vector(0,0,undefined,undefined);
+	sendToAll("countdown", undefined);
+	paused = true;
+	setTimeout(function(){
+		this.movement = new Vector(1,0,undefined,undefined);
+		paused = false;
+	}, 4000);
+}
+
 Ball.prototype.update = function(delta) {
 	if (C.collision(this, this.paddle1) && this.paddle1.canColide == true) {
 		this.movement.setX(-this.movement.getX());
@@ -76,12 +88,14 @@ Ball.prototype.update = function(delta) {
 			serverInfo.score2++;
 		}
 		this.movement.setX(Math.abs(this.movement.getX()))
+		this.ballReset();
 	}
 	if(this.x + (2*this.radius) > 1280){
 		if(wall2Active){
 			serverInfo.score1++;
 		}
 		this.movement.setX(-Math.abs(this.movement.getX()))
+		this.ballReset();
 	}
 	if(this.y < 0){
 		this.movement.setY(Math.abs(this.movement.getY()))
@@ -163,6 +177,7 @@ http.listen((process.env.PORT || 7777), function(){
 	console.log("listening on port 7777");
 });
 
+var paused = false;
 var testPaddle1 = new Paddle(0);
 var testPaddle2 = new Paddle(1);
 var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, testPaddle2);
@@ -179,9 +194,10 @@ var sendToAll = function(type, obj) {
 }
 
 var update = function() {
-	performGravity(serverInfo.getBall(), serverInfo.getWell1());
-	performGravity(serverInfo.getBall(), serverInfo.getWell2());
-	
+	if(paused == false){
+		performGravity(serverInfo.getBall(), serverInfo.getWell1());
+		performGravity(serverInfo.getBall(), serverInfo.getWell2());
+	}
 	serverInfo.getBall().update();
 	sendToAll("serverInfo", serverInfo);	
 	setTimeout(update, 15);

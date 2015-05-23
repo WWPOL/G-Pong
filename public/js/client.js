@@ -22,6 +22,8 @@ var well2 = new Ball(20);
 var paddle1 = new Paddle(0)
 var paddle2 = new Paddle(1)
 
+var countdown = false;
+
 //var game = new Game();
 
 var main = function(){
@@ -38,22 +40,73 @@ var update = function(delta) {
 
 }
 
+var alreadyDone = false;
+
 var render = function(){
-	gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
-	gameContext.drawImage(background, 0, 0)
+	if(countdown == false){
+		gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
+		gameContext.drawImage(background, 0, 0)
 
-	gameContext.font = "30px Arial";
-	gameContext.fillStyle = "white";
-	gameContext.fillText("Player1: " + score1, 50, 60);
-	gameContext.fillText("Player2: " + score2, 1100, 60);
+		gameContext.font = "30px Arial";
+		gameContext.fillStyle = "white";
+		gameContext.fillText("Player 1: " + score1, 50, 60);
+		gameContext.fillText("Player 2: " + score2, 1100, 60);
 
-	paddle1.render();
-	paddle2.render();
+		paddle1.render();
+		paddle2.render();
 
-	if(typeof serverInfo !== "undefined"){
-		ball.render();
-		well1.render();
-		well2.render();
+		if(typeof serverInfo !== "undefined"){
+			ball.render();
+			well1.render();
+			well2.render();
+		}
+	}else{
+		if(alreadyDone == false){
+			alreadyDone = true;
+			gameContext.font = "30px Arial"
+			gameContext.fillText("3", 630, 360);	
+			setTimeout(function() {
+				gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
+				gameContext.drawImage(background, 0, 0)
+
+				gameContext.font = "30px Arial";
+				gameContext.fillStyle = "white";
+				gameContext.fillText("Player 1: " + score1, 50, 60);
+				gameContext.fillText("Player 2: " + score2, 1100, 60);
+
+				paddle1.render();
+				paddle2.render();
+
+				if(typeof serverInfo !== "undefined"){
+					ball.render();
+					well1.render();
+					well2.render();
+				}
+				gameContext.fillText("2", 630, 360);
+				setTimeout(function() {
+					gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
+					gameContext.font = "30px Arial";
+					gameContext.fillStyle = "white";
+					gameContext.fillText("Player 1: " + score1, 50, 60);
+					gameContext.fillText("Player 2: " + score2, 1100, 60);
+
+					paddle1.render();
+					paddle2.render();
+
+					if(typeof serverInfo !== "undefined"){
+						ball.render();
+						well1.render();
+						well2.render();
+					}
+					gameContext.fillText("1", 630, 360);
+					setTimeout(function() {
+						gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);	
+						countdown = false;
+						alreadyDone = false;
+					}, 1000);
+				}, 1000);
+			}, 1000);	
+		}
 	}
 }
 

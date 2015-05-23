@@ -20,6 +20,10 @@ socket.on("full", function () {
 	window.location.replace("http://i.imgur.com/H4Bxiog.jpg?1");
 });
 
+socket.on("countdown", function(){
+	countdown = true;
+});
+
 socket.on("serverInfo", function(info){
 	serverInfo = info;
 
