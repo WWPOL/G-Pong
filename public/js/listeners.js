@@ -9,6 +9,7 @@ socket.on("start", function() {
 	alert("READY?");
 	socket.emit("ready");
 	main();
+	countdown = true;
 });
 
 socket.on("update", function () {
