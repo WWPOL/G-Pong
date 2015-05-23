@@ -64,7 +64,7 @@ io.on("connection", function (socket) {
 	});
 });
 
-http.listen(7777, function(){
+http.listen((process.env.PORT || 7777), function(){
 	console.log("listening on port 7777");
 });
 
