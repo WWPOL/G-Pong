@@ -57,7 +57,9 @@ var render = function(){
 
 		if(typeof serverInfo !== "undefined"){
 			ball.render();
+			well1.lastHit = 0;
 			well1.render();
+			well2.lastHit = 1;
 			well2.render();
 		}
 	}else{
@@ -77,7 +79,9 @@ var render = function(){
 
 			if(typeof serverInfo !== "undefined"){
 				ball.render();
+				well1.lastHit = 0;
 				well1.render();
+				well2.lastHit = 1;
 				well2.render();
 			}
 			gameContext.fillText("3", 630, 360);	
@@ -95,8 +99,8 @@ var render = function(){
 
 				if(typeof serverInfo !== "undefined"){
 					ball.render();
-					well1.render();
-					well2.render();
+					well1.lastHit = 0;
+					well2.lastHit = 1; well2.render();
 				}
 				gameContext.fillText("2", 630, 360);
 				setTimeout(function() {
@@ -112,8 +116,9 @@ var render = function(){
 
 					if(typeof serverInfo !== "undefined"){
 						ball.render();
+						well1.lastHit = 0;
 						well1.render();
-						well2.render();
+						well2.lastHit = 1; well2.render();
 					}
 					gameContext.fillText("1", 630, 360);
 					setTimeout(function() {
@@ -129,7 +134,9 @@ var render = function(){
 
 						if(typeof serverInfo !== "undefined"){
 							ball.render();
+							well1.lastHit = 0;
 							well1.render();
+							well2.lastHit = 1; 
 							well2.render();
 						}
 						countdown = false;
