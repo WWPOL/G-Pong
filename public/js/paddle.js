@@ -1,18 +1,21 @@
-Paddle = new function(int player) {
-	if (player === 1) {
-		this.x = 10;
-		this.y = gameContext.height / 2;
+Paddle = new function(int playerIndex) {
+	var X_OFFSET = 10;
+	var DEFAULT_Y = gameContext.height / 2;
+
+	if (playerIndex === 0) {
+		this.x = X_OFFSET;
+		this.y = DEFAULT_Y;
 	}
-	else if (player === 2) {
-		this.x = gameContext.width - 10;
-		this.y = gameContext.height / 2;
+	else if (playerIndex === 1) {
+		this.x = gameContext.width - X_OFFSET;
+		this.y = DEFAULT_Y;
 	}
 }
 
-var getX() {
-	return this.x;
+var Paddle.prototype.getX() = function() {
+	return this.x
 }
 
-var getY() {
+var Paddle.prototype.getY() = function() {
 	return this.y;
 }
