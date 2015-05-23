@@ -21,6 +21,7 @@ var well1 = new Ball(20);
 var well2 = new Ball(20);
 var paddle1 = new Paddle(0)
 var paddle2 = new Paddle(1)
+var spectator = false;
 
 var countdown = false;
 

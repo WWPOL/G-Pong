@@ -169,9 +169,7 @@ io.on("connection", function (socket) {
 	});
 
 	if (users.length > 2) { //if there's already two players, kick anyone else
-		console.log("Server is full, goodbye " + socket.id);
-		io.to(socket.id).emit("full");
-		socket.disconnect();
+		io.to(socket.id).emit("spectator");
 	}
 
 	socket.on("clientInfo", function (clientInfo) {

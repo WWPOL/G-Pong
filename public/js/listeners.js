@@ -16,9 +16,9 @@ socket.on("update", function () {
 	console.log("update");
 });
 
-socket.on("full", function () {
-	alert("Sorry! Server is full!");
-	window.location.replace("http://i.imgur.com/H4Bxiog.jpg?1");
+socket.on("spectator", function () {
+	spectator = true
+	main();
 });
 
 socket.on("countdown", function(){
