@@ -25,6 +25,7 @@ io.on("connection", function (socket) {
 	if (users.length == 2) { //when 2 players connect, start game
 		console.log("Starting game with users " + users);
 		io.emit("start");
+		update(); 
 	}
 
 	if (users.length > 2) { //if there's already two players, kick anyone else
@@ -32,13 +33,24 @@ io.on("connection", function (socket) {
 		io.to(socket.id).emit("full");
 		socket.disconnect();
 	}
+
+	socket.on("clientInfo", function () {
+
+	});
 });
-
-function sendToAll() {
-
-}
-
 
 http.listen(7777, function(){
 	console.log("listening on port 7777");
 });
+
+var sendToAll = function() {
+	console.log("updating");
+	io.emit("update");
+}
+
+var update = function() {
+	sendToAll();	
+	setTimeout(update, 50);
+}
+
+
