@@ -7,7 +7,12 @@ var mouseX;
 var mouseY;
 
 var serverInfo;
-var clientInfo;
+var clientInfo = new ClientInfo();
+
+var clientNum;
+
+var paddle1 = new Paddle(0)
+var paddle2 = new Paddle(1)
 
 var game = new Game();
 
@@ -26,8 +31,12 @@ var update = function(delta){
 }
 
 var render = function(){
-	game.render();
-}	
+	paddle1.render();
+	paddle2.render();
+	serverInfo.getBall().render();
+	serverInfo.getWell1().render();
+	serverInfo.getWell2().render();
+}
 
 then = Date.now();
 main();
