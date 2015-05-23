@@ -1,6 +1,7 @@
 {
   "name": "G-Pong",
   "version": "0.0.0",
+  "start": "node index.js",
   "description": "Gravity pong.",
   "dependencies": {
     "debug": "^2.1.1",
