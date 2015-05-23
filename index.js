@@ -82,7 +82,6 @@ Ball.prototype.update = function(delta) {
 		wall2Active = false;
 	}
 
-
 	if(this.x < 0){
 		if(wall1Active){
 			serverInfo.score2++;
