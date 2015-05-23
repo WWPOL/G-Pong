@@ -1,6 +1,6 @@
 Ball = function(x, y, mass, movement) {
 	this.image = new Image();
-	image.src = "../assets/ball-blue.png"
+	this.mage.src = "../assets/ball-blue.png"
 
 	this.x = x;
 	this.y = y;
