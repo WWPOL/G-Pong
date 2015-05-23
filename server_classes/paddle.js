@@ -2,29 +2,19 @@ Paddle = function(playerIndex) {
 	this.playerIndex = playerIndex;
 
 	var X_OFFSET = 10;
-	var DEFAULT_Y = gameCanvas.height / 2;
-
-	this.image = new Image();
+	var DEFAULT_Y = 50;
 
 	this.height = 200;
 	this.width = 20;
 
 	if (playerIndex === 0) {
-		this.image.src = "../assets/paddle-blue.png";
-
 		this.x = X_OFFSET;
 	}
 	else if (playerIndex === 1) {
-		this.image.src = "../assets/paddle-red.png";
-
-		this.x = gameCanvas.width - this.width - X_OFFSET;
+		this.x = 1280 - this.width - X_OFFSET;
 	}
 
 	this.y = DEFAULT_Y - this.height / 2;
-}
-
-Paddle.prototype.render = function() {
-	gameContext.drawImage(this.image, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 }
 
 Paddle.prototype.getX = function() {

@@ -1,4 +1,4 @@
-var collision(ball, paddle){
+collision = function(ball, paddle) {
 	ballCX = ball.x + ball.radius;
     ballCY = ball.y + ball.radius;
     if(paddle.x <= ballCX && ballCX <= paddle.x + paddle.width){ //Top Side
@@ -47,4 +47,6 @@ var collision(ball, paddle){
     return false;
 };
 
-modules.export = collision;
+module.exports = {
+    collision: collision
+}
