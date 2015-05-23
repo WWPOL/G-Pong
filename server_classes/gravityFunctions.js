@@ -3,7 +3,7 @@ calculateGravityVector = function(obj1, obj2){
 	var force = 100 * (obj1.getMass() + obj2.getMass())/(obj1.getMass() + obj2.getMass() + (distance * distance));
 	console.log(force);
 	var angle = calculateAngleBetween(obj1, obj2);
-	console.log(new Vector(null, null, angle, force));
+	return new Vector(null, null, angle, force);
 }
 
 performGravity = function(obj1, obj2){
