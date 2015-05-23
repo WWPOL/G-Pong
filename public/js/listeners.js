@@ -12,3 +12,7 @@ socket.on("full", function () {
 	alert("Sorry! Server is full!");
 	window.location.replace("https://google.com");
 });
+
+socket.on("serverInfo", function(info){
+	serverInfo = info;
+});

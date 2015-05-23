@@ -6,6 +6,9 @@ var gameContext = gameCanvas.getContext("2d");
 var mouseX;
 var mouseY;
 
+var serverInfo;
+var clientInfo;
+
 var main = function(){
 	now = Date.now();
 	delta = now - then;
