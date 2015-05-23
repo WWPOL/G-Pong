@@ -26,7 +26,7 @@ io.on("connection", function (socket) {
 	users.push(socket.id);
 	console.log(users.length + " users connected");
 
-	io.to(socket.id).emit("clientNum", users.length); //give an ID number to the client
+	io.to(socket.id).emit("clientNum", users.length-1); //give an ID number to the client
 
 	socket.on("disconnect", function () {
 		console.log("User " + socket.id + " left");
@@ -46,8 +46,12 @@ io.on("connection", function (socket) {
 		socket.disconnect();
 	}
 
-	socket.on("clientInfo", function () {
-
+	socket.on("clientInfo", function (clientInfo) {
+		if(clientInfo.getClientNum() == 0){
+			serverInfo.setWell1(clientInfo.getWell());
+		}else{
+			serverInfo.setWell2(clientInfo.getWell());
+		}
 	});
 });
 
@@ -55,16 +59,16 @@ http.listen(7777, function(){
 	console.log("listening on port 7777");
 });
 
-var sendToAll = function() {
+var sendToAll = function(type, obj) {
 	console.log("updating");
-	io.emit("update");
+	io.emit(type, obj);
 }
 
 var update = function() {
 	performGravity(serverInfo.getBall(), serverInfo.getWell1());
 	performGravity(serverInfo.getBall(), serverInfo.getWell2());
 	serverInfo.getBall().update();
-	sendToAll();	
+	sendToAll("serverInfo", serverInfo);	
 	setTimeout(update, 50);
 }
 

@@ -14,7 +14,7 @@ var clientNum;
 var paddle1 = new Paddle(0)
 var paddle2 = new Paddle(1)
 
-var game = new Game();
+//var game = new Game();
 
 var main = function(){
 	now = Date.now();
