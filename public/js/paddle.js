@@ -1,6 +1,6 @@
 Paddle = new function(playerIndex) {
 	var X_OFFSET = 10;
-	var DEFAULT_Y = gameContext.height / 2;
+	var DEFAULT_Y = document.getElementById("c").getContext("2d").height / 2;
 
 	this.image = new Image();
 
