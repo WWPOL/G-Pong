@@ -9,6 +9,9 @@ var mouseY;
 var serverInfo;
 var clientInfo = new ClientInfo();
 
+var background = new Image();
+background.src = "../assets/Background.png"
+
 var clientNum;
 
 var ball = new Ball(10);
@@ -35,6 +38,7 @@ var update = function(delta) {
 
 var render = function(){
 	gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
+	gameContext.drawImage(background, 0, 0)
 
 	paddle1.render();
 	paddle2.render();
