@@ -1,5 +1,6 @@
 Paddle = function(playerIndex) {
 	this.playerIndex = playerIndex;
+	this.score = 0;
 
 	var X_OFFSET = 10;
 	var DEFAULT_Y = gameCanvas.height / 2;
