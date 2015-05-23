@@ -62,8 +62,24 @@ var render = function(){
 		}
 	}else{
 		if(alreadyDone == false){
+			gameContext.drawImage(background, 0, 0)
 			alreadyDone = true;
 			gameContext.font = "30px Arial"
+			gameContext.drawImage(background, 0, 0)
+
+			gameContext.font = "30px Arial";
+			gameContext.fillStyle = "white";
+			gameContext.fillText("Player 1: " + score1, 50, 60);
+			gameContext.fillText("Player 2: " + score2, 1100, 60);
+
+			paddle1.render();
+			paddle2.render();
+
+			if(typeof serverInfo !== "undefined"){
+				ball.render();
+				well1.render();
+				well2.render();
+			}
 			gameContext.fillText("3", 630, 360);	
 			setTimeout(function() {
 				gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
