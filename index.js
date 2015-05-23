@@ -180,8 +180,8 @@ var paused = false;
 var testPaddle1 = new Paddle(0);
 var testPaddle2 = new Paddle(1);
 var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, testPaddle2);
-var testWell1 = new Ball(90, 90, 20, 50, new Vector(0,0,null,null))
-var testWell2 = new Ball(200, 90, 20, 50, new Vector(0,0,null,null))
+var testWell1 = new Ball(300, 350, 20, 50, new Vector(0,0,null,null))
+var testWell2 = new Ball(900, 350, 20, 50, new Vector(0,0,null,null))
 var serverInfo = new ServerInfo(testPaddle1.getY(), testPaddle2.getY(), testBall, testWell1, testWell2);
 
 var wall1Active = true;
