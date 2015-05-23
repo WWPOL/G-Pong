@@ -76,7 +76,6 @@ var sendToAll = function(type, obj) {
 
 var update = function() {
 	performGravity(serverInfo.getBall(), serverInfo.getWell1());
-
 	performGravity(serverInfo.getBall(), serverInfo.getWell2());
 	
 	serverInfo.getBall().update();

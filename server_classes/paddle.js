@@ -4,7 +4,7 @@ Paddle = function(playerIndex) {
 	var X_OFFSET = 10;
 	var DEFAULT_Y = 300;
 
-	this.height = 200;
+	this.height = 100;
 	this.width = 20;
 
 	if (playerIndex === 0) {
