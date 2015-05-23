@@ -45,3 +45,13 @@ socket.on("serverInfo", function(info){
 	paddle1.y = info.paddle1Y;
 	paddle2.y = info.paddle2Y;
 });
+
+socket.on("winRedirect", function(){
+	alert("You win!");
+	window.location = "http://i.imgur.com/mXYzUaU.png";
+});
+
+socket.on("loseRedirect", function(){
+	alert("You lose!");
+	window.location = "http://i.imgur.com/kk1yZ8i.png";
+});
