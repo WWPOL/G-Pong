@@ -36,10 +36,12 @@ var update = function(delta) {
 var render = function(){
 	paddle1.render();
 	paddle2.render();
+
 	if(typeof serverInfo !== "undefined"){
 		ball.render();
-		
-	}	
+		well1.render();
+		well2.render();
+	}
 }
 
 then = Date.now();
