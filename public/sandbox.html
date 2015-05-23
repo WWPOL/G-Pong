@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>G-Pong</title>
+	<link rel="shortcut icon" href="favicons/favicon.ico">
+	<link rel="icon" sizes="16x16 32x32 64x64" href="favicons/favicon.ico">
+	<link rel="icon" type="image/png" sizes="196x196" href="favicons/favicon-192.png">
+	<link rel="icon" type="image/png" sizes="160x160" href="favicons/favicon-160.png">
+	<link rel="icon" type="image/png" sizes="96x96" href="favicons/favicon-96.png">
+	<link rel="icon" type="image/png" sizes="64x64" href="favicons/favicon-64.png">
+	<link rel="icon" type="image/png" sizes="32x32" href="favicons/favicon-32.png">
+	<link rel="icon" type="image/png" sizes="16x16" href="favicons/favicon-16.png">
+	<link rel="apple-touch-icon" href="favicons/favicon-57.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="favicons/favicon-114.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="favicons/favicon-72.png">
+	<link rel="apple-touch-icon" sizes="144x144" href="favicons/favicon-144.png">
+	<link rel="apple-touch-icon" sizes="60x60" href="favicons/favicon-60.png">
+	<link rel="apple-touch-icon" sizes="120x120" href="favicons/favicon-120.png">
+	<link rel="apple-touch-icon" sizes="76x76" href="favicons/favicon-76.png">
+	<link rel="apple-touch-icon" sizes="152x152" href="favicons/favicon-152.png">
+	<link rel="apple-touch-icon" sizes="180x180" href="favicons/favicon-180.png">
+	<meta name="msapplication-TileColor" content="#FFFFFF">
+	<meta name="msapplication-TileImage" content="favicons/favicon-144.png">
+	<meta name="msapplication-config" content="favicons/browserconfig.xml">
+	<link href='http://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+	<div id="loading">
+		<div id="container">
+			<h1>Loading...</h1>
+			<img id="loadingimg" src="assets/loading-balls.svg" alt="Loading icon">
+		</div>
+	</div>
+	<div id="menu">
+		<h1>G-Pong</h1>
+		<div id="menucontainer">
+			<div id="buttoncontainer" class="menuchild">
+				Would you like to <br><br>	
+				<button class="button" id="joinbutton">Join a Game</button> or <button class="button" id="hostbutton">Host a Game</button>
+			</div>
+			<div id="inputcontainer" class="menuchild style-4">
+				<input placeholder="Enter the Game ID (XXXXXX)" type="text" id="gameid"> <button class="button" id="submit">Submit</button>
+			</div>
+		</div>
+	</div>
+	<div id="iddisplay">
+		<h1>...</h1>
+	</div>
+	
+
+	<canvas id="c" width="1280" height="720"></canvas>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+	<script src="js/vector.js"></script>
+	<script src="js/paddle.js"></script>
+	<script src="js/ball.js"></script>
+	<script src="js/game.js"></script>
+	<script src="js/sandbox.js"></script>
+	<script src="js/listeners.js"></script>
+</body>
+</html>
