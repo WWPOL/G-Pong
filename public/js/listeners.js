@@ -6,7 +6,6 @@ socket.on("clientNum", function(num){
 });
 
 socket.on("start", function() {
-	alert("game start");
 	main();
 });
 
@@ -21,6 +20,8 @@ socket.on("full", function () {
 
 socket.on("serverInfo", function(info){
 	serverInfo = info;
+
+	console.log(info.ball.x);
 
 	ball.x = info.ball.x;
 	ball.y = info.ball.y;
