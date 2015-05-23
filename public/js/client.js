@@ -34,9 +34,9 @@ var update = function(delta) {
 var render = function(){
 	paddle1.render();
 	paddle2.render();
-	ball.render();
-	serverInfo.getWell1().render();
-	serverInfo.getWell2().render();
+	if(typeof serverInfo !== "undefined"){
+			
+	}	
 }
 
 then = Date.now();
