@@ -1,5 +1,10 @@
 //Socket.io event listeners
 
+socket.on("clientNum", function(num){
+	clientNum = num;
+	clientInfo.setClientNum(num);
+});
+
 socket.on("start", function() {
 	alert("game start");
 });

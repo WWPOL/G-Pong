@@ -18,3 +18,7 @@ ClientInfo.prototype.setWellX = function(x) {
 ClientInfo.prototype.setWellY = function(y){
 	this.well.setY = y;
 };
+
+ClientInfo.prototype.setClientNum = function(num){
+	this.clientNum = num;
+}
