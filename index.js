@@ -119,11 +119,11 @@ app.get('/', function(req, res){
 });
 
 Ball.prototype.checkScores = function() {
-	if (serverInfo.score1 > 3 && serverInfo.score1 - serverInfo.score2 > 1) {
+	if (serverInfo.score1 > 10 && serverInfo.score1 - serverInfo.score2 > 1) {
 		io.to(users[0]).emit("winRedirect");
 		io.to(users[1]).emit("loseRedirect");
 	}
-	else if (serverInfo.score2 > 3 && serverInfo.score2 - serverInfo.score1 > 1) {
+	else if (serverInfo.score2 > 10 && serverInfo.score2 - serverInfo.score1 > 1) {
 		io.to(users[1]).emit("winRedirect");
 		io.to(users[0]).emit("loseRedirect");
 	}
