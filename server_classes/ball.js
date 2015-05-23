@@ -52,9 +52,9 @@ Ball.prototype.update = function(delta) {
 	}
 
 
-	if(this.x < 0){this.movement.setX(Math.abs(this.movement.getX()))}
+	if(this.x - (2*this.radius) < 0){this.movement.setX(Math.abs(this.movement.getX()))}
 	if(this.x + (2*this.radius) > 1280){this.movement.setX(-Math.abs(this.movement.getX()))}
-	if(this.y < 0){this.movement.setY(Math.abs(this.movement.getY()))}
+	if(this.y - (2*this.radius) < 0){this.movement.setY(Math.abs(this.movement.getY()))}
 	if(this.y + (2*this.radius) > 720){this.movement.setY(-Math.abs(this.movement.getY()))}
 
 	this.x += this.movement.getX();
