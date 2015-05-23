@@ -27,16 +27,6 @@ Paddle = function(playerIndex) {
 }
 
 Paddle.prototype.render = function() {
-	if(this.dead == true){
-		this.image.src = "../assets/paddle-dead.png"
-	}else {
-		if (this.playerIndex === 0) {
-			this.image.src = "../assets/paddle-blue.png";
-		}
-		else if (this.playerIndex === 1) {
-			this.image.src = "../assets/paddle-red.png";
-		}
-	}
 	gameContext.drawImage(this.image, this.getX(), this.getY(), this.getWidth(), this.getHeight());
 }
 
