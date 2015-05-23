@@ -11,8 +11,8 @@ Vector = new function(x, y, theta, magnitude){
 };
 
 var addVector(vector){
-	this.x += vector.x;
-	this.y += vector.y;
+	this.x += vector.getX();
+	this.y += vector.getY();
 	updatePolar();
 }
 
