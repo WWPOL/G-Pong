@@ -3,6 +3,14 @@ var app = express();
 var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
+//add class files for game objects
+var ball = require("./server_classes/ball.js");
+var paddle = require("./server_classes/paddle.js");
+var vector = require("./server_classes/vector.js");
+var serverInfo = require("./server_classes/serverInfo.js");
+var clientInfo = require("./server_classes/clientInfo.js");
+var g = require("./server_classes/gravityFunctions.js");
+
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
