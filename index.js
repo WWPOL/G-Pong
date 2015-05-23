@@ -54,16 +54,16 @@ Ball.prototype.update = function(delta) {
 	if (C.collision(this, this.paddle1) && this.paddle1.canColide == true) {
 		this.movement.setX(-this.movement.getX());
 		randomInt = Math.random() * (620);
-		serverInfo.paddle1Y = randomInt
+		serverInfo.setPaddle1Y(randomInt);
 		this.paddle1.y = randomInt
-		console.log("Your mom is fat");
+		console.log("New paddle 1 Y: " + randomInt);
 	}
 	if (C.collision(this, this.paddle2) && this.paddle2.canColide == true) {
 		this.movement.setX(-this.movement.getX());
 		randomInt = Math.random() * (620);
-		serverInfo.paddle2Y = randomInt
+		serverInfo.setPaddle2Y(randomInt);
 		this.paddle2.y = randomInt
-		console.log("I love you");
+		console.log("New paddle 2 Y: " + randomInt);
 	}
 
 
