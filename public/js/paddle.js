@@ -9,6 +9,8 @@ Paddle = function(playerIndex) {
 
 	this.height = 200;
 	this.width = 20;
+	this.dead = false;
+
 
 	if (playerIndex === 0) {
 		this.image.src = "../assets/paddle-blue.png";

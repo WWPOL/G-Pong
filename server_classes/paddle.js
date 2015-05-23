@@ -7,6 +7,8 @@ Paddle = function(playerIndex) {
 	this.height = 100;
 	this.width = 20;
 
+	this.canColide = true;
+
 	if (playerIndex === 0) {
 		this.x = X_OFFSET;
 	}

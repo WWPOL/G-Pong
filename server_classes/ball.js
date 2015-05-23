@@ -8,6 +8,7 @@ Ball = function(x, y, radius, mass, movement, paddle1, paddle2) {
 	this.movement = movement;
 	this.paddle1 = paddle1;
 	this.paddle2 = paddle2;
+	this.lastHit = 0;
 };
 
 Ball.prototype.getX = function() {
@@ -39,19 +40,21 @@ Ball.prototype.getMovement = function(){
 };
 
 Ball.prototype.update = function(delta) {
-	if (C.collision(this, this.paddle1)) {
+	if (C.collision(this, this.paddle1) && this.paddle1.noColide == true) {
 		this.movement.setX(-this.movement.getX());
+		serverInfo.paddle1Y = Math.random() * (1080);
 		console.log("Your mom is fat");
 	}
-	if (C.collision(this, this.paddle2)) {
+	if (C.collision(this, this.paddle2) && this.paddle2.noColide == true) {
 		this.movement.setX(-this.movement.getX());
+		serverInfo.paddle2Y = Math.random() * (1080);
 		console.log("I love you");
 	}
 
 
-	if(this.x < 0){this.movement.setX(Math.abs(this.movement.getX()))}
+	if(this.x - (2*this.radius) < 0){this.movement.setX(Math.abs(this.movement.getX()))}
 	if(this.x + (2*this.radius) > 1280){this.movement.setX(-Math.abs(this.movement.getX()))}
-	if(this.y < 0){this.movement.setY(Math.abs(this.movement.getY()))}
+	if(this.y - (2*this.radius) < 0){this.movement.setY(Math.abs(this.movement.getY()))}
 	if(this.y + (2*this.radius) > 720){this.movement.setY(-Math.abs(this.movement.getY()))}
 
 	this.x += this.movement.getX();

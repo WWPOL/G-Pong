@@ -6,20 +6,35 @@ socket.on("clientNum", function(num){
 });
 
 socket.on("start", function() {
+	alert("READY?");
+	socket.emit("ready");
 	main();
+	countdown = true;
 });
 
 socket.on("update", function () {
 	console.log("update");
 });
 
-socket.on("full", function () {
-	alert("Sorry! Server is full!");
-	window.location.replace("http://i.imgur.com/H4Bxiog.jpg?1");
+socket.on("spectator", function () {
+	spectator = true
+	main();
+});
+
+socket.on("countdown", function(){
+	countdown = true;
 });
 
 socket.on("serverInfo", function(info){
 	serverInfo = info;
+
+	score1 = info.score1;
+	score2 = info.score2;
+
+	ball.lastHit = info.ball.lastHit;
+
+	paddle1.dead = info.paddle1Dead;
+	paddle2.dead = info.paddle2Dead;
 
 	ball.x = info.ball.x;
 	ball.y = info.ball.y;
@@ -32,4 +47,14 @@ socket.on("serverInfo", function(info){
 
 	paddle1.y = info.paddle1Y;
 	paddle2.y = info.paddle2Y;
+});
+
+socket.on("winRedirect", function(){
+	alert("You win!");
+	window.location = "http://i.imgur.com/mXYzUaU.png";
+});
+
+socket.on("loseRedirect", function(){
+	alert("You lose!");
+	window.location = "http://i.imgur.com/kk1yZ8i.png";
 });
