@@ -1,8 +1,142 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
 html, body {
 	background: #f5f5f5;
 	font-family: 'Ubuntu', sans-serif;
+	color: #333;
 }
 
 h1 {
 	text-align: center;
+}
+
+#loading {
+	position: fixed;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	resize: vertical;
+	overflow : auto;
+	width: 100vw;
+	height: 100vh;
+	z-index: 9999;
+	background: #f5f5f5;
+	transition: opacity 0.5s ease;
+}
+
+#container {
+	resize: vertical;
+	overflow: auto;
+}
+
+#loadingimg {
+	height: 128px;
+	width: 128px;
+	display: block;
+	margin: 0 auto;
+	padding-top: 5px;
+}
+
+#menu {
+	position: fixed;
+	z-index: 999;
+	background: #f5f5f5;
+	height: 100vh;
+	width: 100vw;
+	margin: 0 auto;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	resize: both;
+	overflow: auto;
+	text-align: center;
+	transition: opacity 0.5s ease;
+}
+
+#menucontainer {
+	position: relative;
+	width: 50%;
+	resize: both;
+	overflow: auto;
+}
+
+#buttoncontainer {
+	transition: opacity 0.5s ease;
+}
+
+#inputcontainer {
+	opacity: 0.0;
+	transition: opacity 0.5s ease;
+}
+
+#iddisplay {
+	position: fixed;
+	height: 100px;
+	width: 300px;
+	margin: 0 auto;
+	margin-top: -100px;
+	transition: margin 1s ease;
+}
+
+.button {
+  background: transparent;
+  display: inline-block;
+  width: 200px;
+  padding: 8px;
+  cursor: pointer;
+  color: #333;
+  border: 1px solid #333;
+  border-radius: 5px;
+  text-align: center;
+  outline: none;
+  text-decoration: none;
+  transition: background-color 0.2s ease-out,
+              color 0.2s ease-out;
+}
+.button:hover,
+.button:active {
+  background-color: #333;
+  color: #f5f5f5;
+  transition: background-color 0.3s ease-in,
+              color 0.3s ease-in;
+}
+
+input[type="text"] {
+  width: 50%;
+  font-size: 18px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  -webkit-border-radius: none;
+  -moz-border-radius: none;
+  -ms-border-radius: none;
+  -o-border-radius: none;
+  border-radius: none;
+}
+input[type="text"]:focus {
+  outline: none;
+}
+
+.style-4 input[type="text"] {
+  padding: 10px;
+  border: none;
+  border-bottom: solid 2px #c9c9c9;
+  -webkit-transition: border 0.3s;
+  -moz-transition: border 0.3s;
+  -o-transition: border 0.3s;
+  transition: border 0.3s;
+}
+.style-4 input[type="text"]:focus, .style-4 input[type="text"].focus {
+  border-bottom: solid 2px #969696;
+}
+
+.style-4 .button {
+	width: 100px;
+	padding-left: 7px;
 }
