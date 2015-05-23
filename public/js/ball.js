@@ -5,6 +5,7 @@ Ball = function(radius) {
 	this.x;
 	this.y;
 	this.radius = radius
+	this.lastHit = 0;
 };
 
 Ball.prototype.getX = function() {
@@ -32,5 +33,8 @@ Ball.prototype.setRadius = function() {
 }
 
 Ball.prototype.render = function(){
+	if(this.lastHit == 0){this.image.src = "../assets/ball-blue.png"}
+	else{this.image.src = "../assets/ball-red.png"}
+
 	gameContext.drawImage(this.image, this.x, this.y, this.radius * 2, this.radius * 2);
 };

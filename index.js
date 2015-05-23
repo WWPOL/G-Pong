@@ -56,6 +56,7 @@ Ball.prototype.update = function(delta) {
 		randomInt = Math.random() * (620);
 		serverInfo.setPaddle1Y(randomInt);
 		this.paddle1.y = randomInt
+		serverInfo.ball.lastHit = 0;
 		wall1Active = false;
 		wall2Active = true;
 	}
@@ -64,6 +65,7 @@ Ball.prototype.update = function(delta) {
 		randomInt = Math.random() * (620);
 		serverInfo.setPaddle2Y(randomInt);
 		this.paddle2.y = randomInt
+		serverInfo.ball.lastHit = 1
 		wall1Active = true;
 		wall2Active = false;
 	}
