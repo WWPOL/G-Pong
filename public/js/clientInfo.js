@@ -1,4 +1,4 @@
-ClientInfo = function(well){
+ClientInfo = function(well) {
 	this.well = well;
 };
 
