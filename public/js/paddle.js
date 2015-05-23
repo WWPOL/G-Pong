@@ -1,6 +1,6 @@
 Paddle = function(playerIndex) {
 	var X_OFFSET = 10;
-	var DEFAULT_Y = document.getElementById("c").getContext("2d").height / 2;
+	var DEFAULT_Y = gameCanvas.height / 2;
 
 	this.image = new Image();
 
@@ -19,7 +19,7 @@ Paddle = function(playerIndex) {
 }
 
 Paddle.prototype.render = function() {
-	document.getElementById("c").getContext("2d").drawImage(this.image, this.x, this.y);
+	gameContext.drawImage(this.image, this.getX(), this.getY());
 }
 
 Paddle.prototype.getX = function() {
@@ -28,4 +28,8 @@ Paddle.prototype.getX = function() {
 
 Paddle.prototype.getY = function() {
 	return this.y;
+}
+
+Paddle.prototype.setY = function(y) {
+	this.y = y;
 }

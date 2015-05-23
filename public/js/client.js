@@ -7,7 +7,7 @@ var mouseX;
 var mouseY;
 
 var serverInfo;
-var clientInfo;
+var clientInfo = new ClientInfo();
 
 var clientNum;
 
