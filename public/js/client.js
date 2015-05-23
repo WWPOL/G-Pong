@@ -3,6 +3,8 @@ var socket = io();
 var gameCanvas = document.getElementById("c");
 var gameContext = gameCanvas.getContext("2d");
 
+var mouseX;
+var mouseY;
 
 var main = function(){
 	now = Date.now();
