@@ -28,7 +28,7 @@ socket.on("serverInfo", function(info){
 	well1.y = info.well1.y;
 
 	well2.x = info.well2.x;
-	well2.y = info.well2.x;
+	well2.y = info.well2.y;
 
 	paddle1.y = info.paddle1Y;
 	paddle2.y = info.paddle2Y;
