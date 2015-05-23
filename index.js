@@ -51,7 +51,6 @@ io.on("connection", function (socket) {
 		if(clientInfo.clientNum === 0){
 			serverInfo.well1.x = clientInfo.x - serverInfo.well1.radius;
 			serverInfo.well1.y = clientInfo.y - serverInfo.well1.radius;
-			console.log("Player 1 mouse move");
 		}else{
 			serverInfo.well2.x = clientInfo.x - serverInfo.well2.radius;
 			serverInfo.well2.y = clientInfo.y - serverInfo.well2.radius;
