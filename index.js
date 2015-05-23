@@ -69,7 +69,7 @@ var testWell2 = new Ball(200, 90, 20, 50, new Vector(0,0,null,null))
 var serverInfo = new ServerInfo(testPaddle1Y, testPaddle2Y, testBall, testWell1, testWell2);
 
 var sendToAll = function(type, obj) {
-	console.log("updating");
+	//console.log("updating");
 	io.emit(type, obj);
 }
 
