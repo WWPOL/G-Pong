@@ -15,7 +15,7 @@ socket.on("update", function () {
 
 socket.on("full", function () {
 	alert("Sorry! Server is full!");
-	window.location.replace("https://google.com");
+	window.location.replace("http://i.imgur.com/H4Bxiog.jpg?1");
 });
 
 socket.on("serverInfo", function(info){
