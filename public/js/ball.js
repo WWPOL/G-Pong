@@ -1,4 +1,4 @@
-Ball = function(x, y, mass, movement){
+Ball = function(x, y, mass, movement) {
 	this.x = x;
 	this.y = y;
 	this.mass = mass;
