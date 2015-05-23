@@ -1,4 +1,4 @@
-Paddle = new function(playerIndex) {
+Paddle = function(playerIndex) {
 	var X_OFFSET = 10;
 	var DEFAULT_Y = document.getElementById("c").getContext("2d").height / 2;
 
@@ -12,20 +12,20 @@ Paddle = new function(playerIndex) {
 	else if (playerIndex === 1) {
 		this.image.src = "../assets/paddle-red.png";
 
-		this.x = gameContext.width - X_OFFSET;
+		this.x = document.getElementById("c").getContext("2d").width - X_OFFSET;
 	}
 
 	this.y = DEFAULT_Y - this.image.height / 2;
 }
 
 Paddle.prototype.render = function() {
-	gameContext.drawImage(this.image, this.x, this.y);
+	document.getElementById("c").getContext("2d").drawImage(this.image, this.x, this.y);
 }
 
-Paddle.prototype.getX() = function() {
+Paddle.prototype.getX = function() {
 	return this.x
 }
 
-Paddle.prototype.getY() = function() {
+Paddle.prototype.getY = function() {
 	return this.y;
 }
