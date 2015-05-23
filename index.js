@@ -61,7 +61,7 @@ http.listen(7777, function(){
 	console.log("listening on port 7777");
 });
 
-var testBall = new Ball(50, 50, 10, 10, new Vector(1,0,null,null))
+var testBall = new Ball(50, 50, 10, 10, new Vector(2,0,null,null))
 var testPaddle1Y = 40;
 var testPaddle2Y = 40;
 var testWell1 = new Ball(90, 90, 20, 50, new Vector(0,0,null,null))
@@ -75,6 +75,7 @@ var sendToAll = function(type, obj) {
 
 var update = function() {
 	performGravity(serverInfo.getBall(), serverInfo.getWell1());
+
 	performGravity(serverInfo.getBall(), serverInfo.getWell2());
 	serverInfo.getBall().update();
 	sendToAll("serverInfo", serverInfo);	

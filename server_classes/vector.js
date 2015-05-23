@@ -1,9 +1,10 @@
 Vector = function(x, y, theta, magnitude){
-	if(typeof x !== null && typeof y !== null){
+	//if (theta > 0) debugger
+	if(typeof x !== "undefined" && typeof y !== "undefined"){
 		this.x = x;
 		this.y = y;
 		this.updatePolar();
-	}else if(typeof theta !== null && typeof magnitude !== null){
+	}else if(typeof theta !== "undefined" && typeof magnitude !== "undefined"){
 		this.theta = theta;
 		this.magnitude = magnitude;
 		this.updateComponent();
@@ -22,8 +23,8 @@ Vector.prototype.updatePolar = function(){
 };
 
 Vector.prototype.updateComponent = function(){
-	this.x = magnitude * Math.cos(theta);
-	this.y = magnitude * Math.sin(theta);
+	this.x = this.magnitude * Math.cos(this.theta);
+	this.y = this.magnitude * Math.sin(this.theta);
 };
 
 Vector.prototype.setX = function(x){

@@ -40,7 +40,6 @@ var render = function(){
 	paddle2.render();
 
 	if(typeof serverInfo !== "undefined"){
-		console.log("Hello");
 		ball.render();
 		well1.render();
 		well2.render();

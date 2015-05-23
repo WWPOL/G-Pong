@@ -21,7 +21,7 @@ socket.on("full", function () {
 socket.on("serverInfo", function(info){
 	serverInfo = info;
 
-	console.log(info.ball.x);
+	console.log(info.ball.y);
 
 	ball.x = info.ball.x;
 	ball.y = info.ball.y;
