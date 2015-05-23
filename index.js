@@ -82,5 +82,5 @@ var update = function() {
 	
 	serverInfo.getBall().update();
 	sendToAll("serverInfo", serverInfo);	
-	setTimeout(update, 50);
+	setTimeout(update, 15);
 }
