@@ -48,9 +48,11 @@ io.on("connection", function (socket) {
 
 	socket.on("clientInfo", function (clientInfo) {
 		if(clientInfo.getClientNum() == 0){
-			serverInfo.setWell1(clientInfo.getWell());
+			serverInfo.well1.x = clientInfo.well.x;
+			serverInfo.well1.y = clientInfo.well.y;
 		}else{
-			serverInfo.setWell2(clientInfo.getWell());
+			serverInfo.well2.x = clientInfo.well.x;
+			serverInfo.well2.y = clientInfo.well.y;
 		}
 	});
 });
