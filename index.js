@@ -136,6 +136,10 @@ io.on("connection", function (socket) {
 
 	if (users.length == 2) { //when 2 players connect, start game
 		io.emit("start");
+		paused = true
+		setTimeout(function(){
+			paused = false;
+		}, 4000);
 	}
 
 	socket.on("ready", function () {
@@ -179,7 +183,7 @@ http.listen((process.env.PORT || 7777), function(){
 var paused = false;
 var testPaddle1 = new Paddle(0);
 var testPaddle2 = new Paddle(1);
-var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, testPaddle2);
+var testBall = new Ball((1280/2) - 10, (720/2) - 10, 10, 10, new Vector(0,0,null,null), testPaddle1, testPaddle2);
 var testWell1 = new Ball(300, 350, 20, 50, new Vector(0,0,null,null))
 var testWell2 = new Ball(900, 350, 20, 50, new Vector(0,0,null,null))
 var serverInfo = new ServerInfo(testPaddle1.getY(), testPaddle2.getY(), testBall, testWell1, testWell2);
