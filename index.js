@@ -26,7 +26,8 @@ io.on("connection", function (socket) {
 	users.push(socket.id);
 	console.log(users.length + " users connected");
 
-	io.to(socket.id).emit("clientNum", users.length-1); //give an ID number to the client
+	socket.emit("clientNum", users.length-1); //give an ID number to the client
+	console.log("Assigned " + socket.id + " to the number of " + (users.length - 1));
 
 	socket.on("disconnect", function () {
 		console.log("User " + socket.id + " left");
@@ -47,7 +48,7 @@ io.on("connection", function (socket) {
 	}
 
 	socket.on("clientInfo", function (clientInfo) {
-		if(clientInfo.clientNum == 0){
+		if(clientInfo.clientNum === 0){
 			serverInfo.well1.x = clientInfo.x - serverInfo.well1.radius;
 			serverInfo.well1.y = clientInfo.y - serverInfo.well1.radius;
 			console.log("Player 1 mouse move");
