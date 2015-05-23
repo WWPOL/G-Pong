@@ -56,14 +56,16 @@ Ball.prototype.update = function(delta) {
 		randomInt = Math.random() * (620);
 		serverInfo.setPaddle1Y(randomInt);
 		this.paddle1.y = randomInt
-		console.log("New paddle 1 Y: " + randomInt);
+		wall1Active = false;
+		wall2Active = true;
 	}
 	if (C.collision(this, this.paddle2) && this.paddle2.canColide == true) {
 		this.movement.setX(-this.movement.getX());
 		randomInt = Math.random() * (620);
 		serverInfo.setPaddle2Y(randomInt);
 		this.paddle2.y = randomInt
-		console.log("New paddle 2 Y: " + randomInt);
+		wall1Active = true;
+		wall2Active = false;
 	}
 
 
