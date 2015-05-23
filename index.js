@@ -67,10 +67,24 @@ Ball.prototype.update = function(delta) {
 	}
 
 
-	if(this.x < 0){this.movement.setX(Math.abs(this.movement.getX()))}
-	if(this.x + (2*this.radius) > 1280){this.movement.setX(-Math.abs(this.movement.getX()))}
-	if(this.y < 0){this.movement.setY(Math.abs(this.movement.getY()))}
-	if(this.y + (2*this.radius) > 720){this.movement.setY(-Math.abs(this.movement.getY()))}
+	if(this.x < 0){
+		if(wall1Active){
+			serverInfo.score2++;
+		}
+		this.movement.setX(Math.abs(this.movement.getX()))
+	}
+	if(this.x + (2*this.radius) > 1280){
+		if(wall2Active){
+			serverInfo.score1++;
+		}
+		this.movement.setX(-Math.abs(this.movement.getX()))
+	}
+	if(this.y < 0){
+		this.movement.setY(Math.abs(this.movement.getY()))
+	}
+	if(this.y + (2*this.radius) > 720){
+		this.movement.setY(-Math.abs(this.movement.getY()))
+	}
 
 	this.x += this.movement.getX();
 	this.y += this.movement.getY();
@@ -151,6 +165,9 @@ var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, 
 var testWell1 = new Ball(90, 90, 20, 50, new Vector(0,0,null,null))
 var testWell2 = new Ball(200, 90, 20, 50, new Vector(0,0,null,null))
 var serverInfo = new ServerInfo(testPaddle1.getY(), testPaddle2.getY(), testBall, testWell1, testWell2);
+
+var wall1Active = true;
+var wall2Active = true;
 
 var sendToAll = function(type, obj) {
 	//console.log("updating");

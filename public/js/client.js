@@ -15,6 +15,8 @@ background.src = "../assets/Background.png"
 var clientNum;
 
 var ball = new Ball(10);
+var score1 = 0;
+var score2 = 0;
 var well1 = new Ball(20);
 var well2 = new Ball(20);
 var paddle1 = new Paddle(0)
@@ -39,6 +41,11 @@ var update = function(delta) {
 var render = function(){
 	gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
 	gameContext.drawImage(background, 0, 0)
+
+	gameContext.font = "30px Arial";
+	gameContext.fillStyle = "white";
+	gameContext.fillText("Player1: " + score1, 50, 60);
+	gameContext.fillText("Player2: " + score2, 1100, 60);
 
 	paddle1.render();
 	paddle2.render();
