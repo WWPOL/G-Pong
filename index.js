@@ -61,14 +61,20 @@ io.on("connection", function (socket) {
 		if(clientInfo.clientNum === 0){
 			serverInfo.well1.x = clientInfo.x - serverInfo.well1.radius;
 			serverInfo.well1.y = clientInfo.y - serverInfo.well1.radius;
+			if(serverInfo.well1.x + (serverInfo.well1.radius * 2) > 640){
+				serverInfo.well1.x = 640 - (serverinfo.well1.radius * 2);
+			}
 		}else{
 			serverInfo.well2.x = clientInfo.x - serverInfo.well2.radius;
 			serverInfo.well2.y = clientInfo.y - serverInfo.well2.radius;
+			if(serverInfo.well2.x < 640){
+				serverInfo.well2.x = 640;
+			}
 		}
 	});
 });
 
-http.listen(7777, function(){
+http.listen((process.env.PORT || 7777), function(){
 	console.log("listening on port 7777");
 });
 
