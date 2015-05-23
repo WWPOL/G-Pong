@@ -1,64 +1,64 @@
-Vector = new function(x, y, theta, magnitude){
+Vector = function(x, y, theta, magnitude){
 	if(typeof x !== null && typeof y !== null){
 		this.x = x;
 		this.y = y;
-		updatePolar();
+		this.updatePolar();
 	}else if(typeof theta !== null && typeof magnitude !== null){
 		this.theta = theta;
 		this.magnitude = magnitude;
-		updateComponent();
+		this.updateComponent();
 	}
 };
 
-var Vector.prototype.addVector(vector){
+Vector.prototype.addVector = function(vector){
 	this.x += vector.getX();
 	this.y += vector.getY();
-	updatePolar();
-}
+	this.updatePolar();
+};
 
-var Vector.prototype.updatePolar = function(){
+Vector.prototype.updatePolar = function(){
 	this.theta = Math.atan2(this.y, this.x);
 	this.magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
 };
 
-var Vector.prototype.updateComponent = function()){
+Vector.prototype.updateComponent = function(){
 	this.x = magnitude * Math.cos(theta);
 	this.y = magnitude * Math.sin(theta);
 };
 
-var Vector.prototype.setX = function(x){
+Vector.prototype.setX = function(x){
 	this.x = x;
-	updatePolar();
+	this.updatePolar();
 };
 
-var Vector.prototype.setY = function(y){
+Vector.prototype.setY = function(y){
 	this.y = y;
-	updatePolar();
+	this.updatePolar();
 };
 
-var Vector.prototype.setTheta = function(theta){
+Vector.prototype.setTheta = function(theta){
 	this.theta = theta
 	this.magnitude = Math.sqrt(this.x * this.x + this.y * this.y);
-	updateComponent();
+	this.updateComponent();
 };
 
-var Vector.prototype.setMagnitude = function(magnitude){
+Vector.prototype.setMagnitude = function(magnitude){
 	this.magnitude = magnitude;
-	updateComponent();
+	this.updateComponent();
 };
 
-var Vector.prototype.getX = function(){
+Vector.prototype.getX = function(){
 	return this.x;
 };
 
-var Vector.prototype.getY = function(){
+Vector.prototype.getY = function(){
 	return this.y;
 };
 
-var Vector.prototype.getTheta = function(){
+Vector.prototype.getTheta = function(){
 	return this.theta;
 };
 
-var Vector.prototype.getMagnitude = function(){
-	return this.magnitude
+Vector.prototype.getMagnitude = function(){
+	return this.magnitude;
 };
