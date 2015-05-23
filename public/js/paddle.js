@@ -1,4 +1,4 @@
-Paddle = new function(int playerIndex) {
+Paddle = new function(playerIndex) {
 	var X_OFFSET = 10;
 	var DEFAULT_Y = gameContext.height / 2;
 
