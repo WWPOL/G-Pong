@@ -18,7 +18,7 @@ app.get('/', function(req, res){
 
 
 var users = [];
-
+var readyCount = 0;
 /*var game = new Server(...);*/ //declare game object
 
 io.on("connection", function (socket) {
@@ -33,13 +33,23 @@ io.on("connection", function (socket) {
 		console.log("User " + socket.id + " left");
 		users.splice(users.indexOf(socket.id));
 		console.log(users.length + " users connected");
+		readyCount = 0;
 	});
 
 	if (users.length == 2) { //when 2 players connect, start game
-		console.log("Starting game with users " + users);
 		io.emit("start");
-		update(); 
 	}
+
+	socket.on("ready", function () {
+		if (users.length == 2) {
+			console.log(socket.id + " READY");
+			readyCount++;
+			if (readyCount == 2) {
+				console.log("Starting game with users " + users);
+				update(); 
+			}
+		}
+	});
 
 	if (users.length > 2) { //if there's already two players, kick anyone else
 		console.log("Server is full, goodbye " + socket.id);
@@ -51,7 +61,6 @@ io.on("connection", function (socket) {
 		if(clientInfo.clientNum === 0){
 			serverInfo.well1.x = clientInfo.x - serverInfo.well1.radius;
 			serverInfo.well1.y = clientInfo.y - serverInfo.well1.radius;
-			console.log("Player 1 mouse move");
 		}else{
 			serverInfo.well2.x = clientInfo.x - serverInfo.well2.radius;
 			serverInfo.well2.y = clientInfo.y - serverInfo.well2.radius;

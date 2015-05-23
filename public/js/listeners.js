@@ -6,6 +6,8 @@ socket.on("clientNum", function(num){
 });
 
 socket.on("start", function() {
+	alert("READY?");
+	socket.emit("ready");
 	main();
 });
 
