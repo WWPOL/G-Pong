@@ -4,12 +4,79 @@ var http = require('http').Server(app);
 var io = require('socket.io')(http);
 
 //add class files for game objects
-var Ball = require("./server_classes/ball.js");
+//var Ball = require("./server_classes/ball.js");
 var Paddle = require("./server_classes/paddle.js");
 var Vector = require("./server_classes/vector.js");
 var ServerInfo = require("./server_classes/serverInfo.js");
 var ClientInfo = require("./server_classes/clientInfo.js");
 var G = require("./server_classes/gravityFunctions.js");
+var C = require("./server_classes/collisions.js");
+
+Ball = function(x, y, radius, mass, movement, paddle1, paddle2) {
+	this.x = x;
+	this.y = y;
+	this.radius = radius;
+	this.mass = mass;
+	this.movement = movement;
+	this.paddle1 = paddle1;
+	this.paddle2 = paddle2;
+};
+
+Ball.prototype.getX = function() {
+	return this.x;
+};
+
+Ball.prototype.getY = function(){
+	return this.y;
+};
+
+Ball.prototype.getRadius = function(){
+	return this.radius
+}
+
+Ball.prototype.setX = function(x){
+	thix.x = x;
+}
+
+Ball.prototype.setY = function(y){
+	this.y = y;
+}
+
+Ball.prototype.getMass = function(){
+	return this.mass;
+};
+
+Ball.prototype.getMovement = function(){
+	return this.movement;
+};
+
+Ball.prototype.update = function(delta) {
+	if (C.collision(this, this.paddle1) && this.paddle1.canColide == true) {
+		this.movement.setX(-this.movement.getX());
+		randomInt = Math.random() * (620);
+		serverInfo.paddle1Y = randomInt
+		this.paddle1.y = randomInt
+		console.log("Your mom is fat");
+	}
+	if (C.collision(this, this.paddle2) && this.paddle2.canColide == true) {
+		this.movement.setX(-this.movement.getX());
+		randomInt = Math.random() * (620);
+		serverInfo.paddle2Y = randomInt
+		this.paddle2.y = randomInt
+		console.log("I love you");
+	}
+
+
+	if(this.x < 0){this.movement.setX(Math.abs(this.movement.getX()))}
+	if(this.x + (2*this.radius) > 1280){this.movement.setX(-Math.abs(this.movement.getX()))}
+	if(this.y < 0){this.movement.setY(Math.abs(this.movement.getY()))}
+	if(this.y + (2*this.radius) > 720){this.movement.setY(-Math.abs(this.movement.getY()))}
+
+	this.x += this.movement.getX();
+	this.y += this.movement.getY();
+
+	
+};
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
@@ -62,7 +129,7 @@ io.on("connection", function (socket) {
 			serverInfo.well1.x = clientInfo.x - serverInfo.well1.radius;
 			serverInfo.well1.y = clientInfo.y - serverInfo.well1.radius;
 			if(serverInfo.well1.x + (serverInfo.well1.radius * 2) > 640){
-				serverInfo.well1.x = 640 - (serverinfo.well1.radius * 2);
+				serverInfo.well1.x = 640 - (serverInfo.well1.radius * 2);
 			}
 		}else{
 			serverInfo.well2.x = clientInfo.x - serverInfo.well2.radius;

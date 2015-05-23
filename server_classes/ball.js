@@ -39,12 +39,14 @@ Ball.prototype.getMovement = function(){
 };
 
 Ball.prototype.update = function(delta) {
-	if (C.collision(this, this.paddle1)) {
+	if (C.collision(this, this.paddle1) && this.paddle1.noColide == true) {
 		this.movement.setX(-this.movement.getX());
+		serverInfo.paddle1Y = Math.random() * (1080);
 		console.log("Your mom is fat");
 	}
-	if (C.collision(this, this.paddle2)) {
+	if (C.collision(this, this.paddle2) && this.paddle2.noColide == true) {
 		this.movement.setX(-this.movement.getX());
+		serverInfo.paddle2Y = Math.random() * (1080);
 		console.log("I love you");
 	}
 
