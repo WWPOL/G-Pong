@@ -1,9 +1,10 @@
-Ball = function(x, y, mass, movement) {
+Ball = function(x, y, radius, mass, movement) {
 	this.image = new Image();
 	this.image.src = "../assets/ball-blue.png"
 
 	this.x = x;
 	this.y = y;
+	this.radius = radius;
 	this.mass = mass;
 	this.movement = movement;
 };
@@ -15,6 +16,10 @@ Ball.prototype.getX = function() {
 Ball.prototype.getY = function(){
 	return this.y;
 };
+
+Ball.prototype.getRadius = function(){
+	return this.radius
+}
 
 Ball.prototype.setX = function(x){
 	thix.x = x;
@@ -38,5 +43,5 @@ Ball.prototype.update = function(delta) {
 };
 
 Ball.prototype.render = function(){
-	gameContext.drawImage(this.image, this.getX(), this.getY());
+	gameContext.drawImage(this.image, this.getX(), this.getY(), this.radius * 2, this.radius * 2);
 };
