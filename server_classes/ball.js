@@ -8,6 +8,7 @@ Ball = function(x, y, radius, mass, movement, paddle1, paddle2) {
 	this.movement = movement;
 	this.paddle1 = paddle1;
 	this.paddle2 = paddle2;
+	this.lastHit = 0;
 };
 
 Ball.prototype.getX = function() {

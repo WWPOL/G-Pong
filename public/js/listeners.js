@@ -26,6 +26,8 @@ socket.on("serverInfo", function(info){
 	score1 = info.score1;
 	score2 = info.score2;
 
+	ball.lastHit = info.ball.lastHit;
+
 	ball.x = info.ball.x;
 	ball.y = info.ball.y;
 
