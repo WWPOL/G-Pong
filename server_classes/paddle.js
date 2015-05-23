@@ -2,7 +2,7 @@ Paddle = function(playerIndex) {
 	this.playerIndex = playerIndex;
 
 	var X_OFFSET = 10;
-	var DEFAULT_Y = 50;
+	var DEFAULT_Y = 300;
 
 	this.height = 200;
 	this.width = 20;
@@ -22,6 +22,7 @@ Paddle.prototype.getX = function() {
 }
 
 Paddle.prototype.getY = function() {
+	console.log(this.y);
 	return this.y;
 }
 

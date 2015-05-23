@@ -12,11 +12,11 @@ ClientInfo.prototype.getClientNum = function(){
 }
 
 ClientInfo.prototype.setWellX = function(x) {
-	this.well.setX = x;
+	this.well.setX(x);
 };
 
 ClientInfo.prototype.setWellY = function(y){
-	this.well.setY = y;
+	this.well.setY(y);
 };
 
 ClientInfo.prototype.setClientNum = function(num){

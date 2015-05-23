@@ -43,9 +43,11 @@ Ball.prototype.update = function(delta) {
 	this.y += this.movement.getY();
 
 	if (C.collision(this, this.paddle1)) {
+		this.movement.setX(-this.movement.getX());
 		console.log("Your mom is fat");
 	}
 	if (C.collision(this, this.paddle2)) {
+		this.movement.setX(-this.movement.getX());
 		console.log("I love you");
 	}
 };

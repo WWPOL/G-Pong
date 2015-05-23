@@ -64,11 +64,9 @@ http.listen(7777, function(){
 var testPaddle1 = new Paddle(0);
 var testPaddle2 = new Paddle(1);
 var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, testPaddle2);
-var testPaddle1Y = 40;
-var testPaddle2Y = 40;
 var testWell1 = new Ball(90, 90, 20, 50, new Vector(0,0,null,null))
 var testWell2 = new Ball(200, 90, 20, 50, new Vector(0,0,null,null))
-var serverInfo = new ServerInfo(testPaddle1Y, testPaddle2Y, testBall, testWell1, testWell2);
+var serverInfo = new ServerInfo(testPaddle1.getY(), testPaddle2.getY(), testBall, testWell1, testWell2);
 
 var sendToAll = function(type, obj) {
 	//console.log("updating");
