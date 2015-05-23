@@ -39,9 +39,6 @@ Ball.prototype.getMovement = function(){
 };
 
 Ball.prototype.update = function(delta) {
-	this.x += this.movement.getX();
-	this.y += this.movement.getY();
-
 	if (C.collision(this, this.paddle1)) {
 		this.movement.setX(-this.movement.getX());
 		console.log("Your mom is fat");
@@ -50,6 +47,17 @@ Ball.prototype.update = function(delta) {
 		this.movement.setX(-this.movement.getX());
 		console.log("I love you");
 	}
+
+
+	if(this.x < 0){this.movement.setX(Math.abs(this.movement.getX()))}
+	if(this.x + (2*this.radius) > 1280){this.movement.setX(-Math.abs(this.movement.getX()))}
+	if(this.y < 0){this.movement.setY(Math.abs(this.movement.getY()))}
+	if(this.y + (2*this.radius) > 720){this.movement.setY(-Math.abs(this.movement.getY()))}
+
+	this.x += this.movement.getX();
+	this.y += this.movement.getY();
+
+	
 };
 
 module.exports = Ball;	
