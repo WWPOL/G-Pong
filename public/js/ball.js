@@ -29,5 +29,5 @@ Ball.prototype.update = function(delta) {
 Ball.prototype.render = function(){
 	image = new Image();
 	image.src = "../assets/ball-blue.png"
-	gameContext.drawImage(image, this.x, this.y);
+	gameContext.drawImage(image, getX(), getY());
 };
