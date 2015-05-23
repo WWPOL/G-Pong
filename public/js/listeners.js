@@ -20,5 +20,15 @@ socket.on("full", function () {
 });
 
 socket.on("serverInfo", function(info){
-	serverInfo = info;
+	ball.x = info.ball.x;
+	ball.y = info.ball.y;
+
+	well1.x = info.well1.x;
+	well1.y = info.well1.y;
+
+	well2.x = info.well2.x;
+	well2.y = info.well2.x;
+
+	paddle1.y = info.paddle1.y;
+	paddle2.y = info.paddle2.y;
 });
