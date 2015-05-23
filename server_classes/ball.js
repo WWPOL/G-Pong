@@ -1,6 +1,4 @@
 Ball = function(x, y, radius, mass, movement) {
-	
-
 	this.x = x;
 	this.y = y;
 	this.radius = radius;

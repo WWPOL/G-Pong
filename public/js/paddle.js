@@ -24,7 +24,11 @@ Paddle = function(playerIndex) {
 }
 
 Paddle.prototype.render = function() {
+<<<<<<< HEAD
 	gameContext.drawImage(this.image, this.getX(), this.getY(), this.getWidth(), this.getHeight());
+=======
+	gameContext.drawImage(this.image, this.getX(), this.getY());
+>>>>>>> 327dba3d165baa12bfcf52080eb31d5621f16db3
 }
 
 Paddle.prototype.getX = function() {
