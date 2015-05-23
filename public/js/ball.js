@@ -35,9 +35,6 @@ Ball.prototype.update = function(delta) {
 };
 
 Ball.prototype.render = function(){
-<<<<<<< HEAD
 	gameContext.drawImage(this.image, this.getX(), this.getY(), this.radius * 2, this.radius * 2 );
-=======
 	gameContext.drawImage(this.image, this.getX(), this.getY());
->>>>>>> b2fe65d06621ca6ba6916f4d09ff978e351c18c9
 };
