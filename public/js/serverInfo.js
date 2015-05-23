@@ -1,6 +1,6 @@
 ServerInfo = function(paddle1Y, paddle2Y, ball, well1, well2){
 	this.paddle1Y = paddle1Y;
-	this.pdadle2Y = paddle2Y;
+	this.paddle2Y = paddle2Y;
 	this.ball = ball;
 	this.well1 = well1;
 	this.well2 = well2;

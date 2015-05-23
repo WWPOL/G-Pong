@@ -27,7 +27,6 @@ var main = function(){
 }
 
 var update = function(delta){
-	
 }
 
 var render = function(){
