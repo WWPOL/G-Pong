@@ -1,4 +1,7 @@
 Ball = function(x, y, mass, movement) {
+	this.image = new Image();
+	image.src = "../assets/ball-blue.png"
+
 	this.x = x;
 	this.y = y;
 	this.mass = mass;
@@ -27,7 +30,5 @@ Ball.prototype.update = function(delta) {
 };
 
 Ball.prototype.render = function(){
-	image = new Image();
-	image.src = "../assets/ball-blue.png"
-	gameContext.drawImage(image, getX(), getY());
+	gameContext.drawImage(image, this.getX(), this.getY());
 };

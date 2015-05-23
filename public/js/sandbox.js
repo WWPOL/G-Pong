@@ -10,7 +10,7 @@ var main = function(){
 	delta = now - then;
 
 	update(delta/1000);
-	render(0);
+	render();
 
 	requestAnimationFrame(main);
 }
