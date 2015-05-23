@@ -1,4 +1,6 @@
 Paddle = function(playerIndex) {
+	this.playerIndex = playerIndex;
+
 	var X_OFFSET = 10;
 	var DEFAULT_Y = gameCanvas.height / 2;
 
@@ -12,14 +14,14 @@ Paddle = function(playerIndex) {
 	else if (playerIndex === 1) {
 		this.image.src = "../assets/paddle-red.png";
 
-		this.x = document.getElementById("c").getContext("2d").width - X_OFFSET;
+		this.x = gameCanvas.width - this.image.width - X_OFFSET;
 	}
 
 	this.y = DEFAULT_Y - this.image.height / 2;
 }
 
 Paddle.prototype.render = function() {
-	gameContext.drawImage(this.image, this.getX(), this.getY());
+gameContext.drawImage(this.image, this.getX(), this.getY());
 }
 
 Paddle.prototype.getX = function() {
