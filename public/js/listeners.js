@@ -33,6 +33,9 @@ socket.on("serverInfo", function(info){
 
 	ball.lastHit = info.ball.lastHit;
 
+	paddle1.dead = info.paddle1Dead;
+	paddle2.dead = info.paddle2Dead;
+
 	ball.x = info.ball.x;
 	ball.y = info.ball.y;
 

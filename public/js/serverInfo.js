@@ -6,6 +6,8 @@ ServerInfo = function(paddle1, paddle2, ball, well1, well2){
 	this.well2 = well2;
 	this.score1 = 0;
 	this.score2 = 0;
+	this.paddle1Dead = false;
+	this.paddle2Dead = false;
 }
 
 //--------------------------------------------------- Getters

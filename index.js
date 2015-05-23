@@ -50,6 +50,18 @@ Ball.prototype.getMovement = function(){
 	return this.movement;
 };
 
+Ball.prototype.ballReset = function(){
+	this.x = (1280/2) - this.radius;
+	this.y = (720/2) - this.radius;
+	this.movement = new Vector(0,0,undefined,undefined);
+	sendToAll("countdown", undefined);
+	paused = true;
+	setTimeout(function(){
+		this.movement = new Vector(1,0,undefined,undefined);
+		paused = false;
+	}, 4000);
+}
+
 Ball.prototype.update = function(delta) {
 	if (C.collision(this, this.paddle1) && this.paddle1.canColide == true) {
 		this.movement.setX(-this.movement.getX());
@@ -57,6 +69,8 @@ Ball.prototype.update = function(delta) {
 		serverInfo.setPaddle1Y(randomInt);
 		this.paddle1.y = randomInt
 		serverInfo.ball.lastHit = 0;
+		serverInfo.paddle1Dead = true;
+		serverInfo.paddle2Dead = false;
 		wall1Active = false;
 		wall2Active = true;
 	}
@@ -66,23 +80,27 @@ Ball.prototype.update = function(delta) {
 		serverInfo.setPaddle2Y(randomInt);
 		this.paddle2.y = randomInt
 		serverInfo.ball.lastHit = 1
+		serverInfo.paddle1Dead = false;
+		serverInfo.paddle2Dead = true;
 		wall1Active = true;
 		wall2Active = false;
 	}
 
 	if(this.x < 0){
-		if(wall1Active){
+		if(wall1Active == true){
 			serverInfo.score2++;
 			this.checkScores();
 		}
 		this.movement.setX(Math.abs(this.movement.getX()))
+		this.ballReset();
 	}
 	if(this.x + (2*this.radius) > 1280){
-		if(wall2Active){
+		if(wall2Active == true){
 			serverInfo.score1++;
 			this.checkScores();
 		}
 		this.movement.setX(-Math.abs(this.movement.getX()))
+		this.ballReset();
 	}
 	if(this.y < 0){
 		this.movement.setY(Math.abs(this.movement.getY()))
@@ -185,15 +203,18 @@ var serverInfo = new ServerInfo(testPaddle1.getY(), testPaddle2.getY(), testBall
 var wall1Active = true;
 var wall2Active = true;
 
+var paused = false;
+
 var sendToAll = function(type, obj) {
 	//console.log("updating");
 	io.emit(type, obj);
 }
 
 var update = function() {
-	performGravity(serverInfo.getBall(), serverInfo.getWell1());
-	performGravity(serverInfo.getBall(), serverInfo.getWell2());
-	
+	if(paused == false){
+		performGravity(serverInfo.getBall(), serverInfo.getWell1());
+		performGravity(serverInfo.getBall(), serverInfo.getWell2());
+	}
 	serverInfo.getBall().update();
 	sendToAll("serverInfo", serverInfo);	
 	setTimeout(update, 15);
