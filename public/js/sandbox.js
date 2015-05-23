@@ -3,7 +3,6 @@ var socket = io();
 var gameCanvas = document.getElementById("c");
 var gameContext = gameCanvas.getContext("2d");
 
-var ball = new Ball(20, 20, 10, new Vector(1,0, null, null));
 var paddle = new Paddle(0);
 
 var main = function(){

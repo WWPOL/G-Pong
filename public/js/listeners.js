@@ -7,6 +7,7 @@ socket.on("clientNum", function(num){
 
 socket.on("start", function() {
 	alert("game start");
+	main();
 });
 
 socket.on("update", function () {

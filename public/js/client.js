@@ -38,4 +38,3 @@ var render = function(){
 }
 
 then = Date.now();
-main();
