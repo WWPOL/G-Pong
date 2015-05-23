@@ -1,6 +1,6 @@
-ServerInfo = function(paddle1, paddle2, ball, well1, well2){
-	this.paddle1 = paddle1;
-	this.paddle2 = paddle2;
+ServerInfo = function(paddle1Y, paddle2Y, ball, well1, well2){
+	this.paddle1Y = paddle1Y;
+	this.paddle2Y = paddle2Y;
 	this.ball = ball;
 	this.well1 = well1;
 	this.well2 = well2;
@@ -8,12 +8,12 @@ ServerInfo = function(paddle1, paddle2, ball, well1, well2){
 
 //--------------------------------------------------- Getters
 
-ServerInfo.prototype.getPaddle1 = function() {
-	return this.paddle1;
+ServerInfo.prototype.getPaddle1Y = function() {
+	return this.paddle1Y;
 };
 
-ServerInfo.prototype.getPaddle2 = function() {
-	return this.paddle2;
+ServerInfo.prototype.getPaddle2Y = function() {
+	return this.paddle2Y;
 };
 
 ServerInfo.prototype.getBall = function() {
@@ -30,12 +30,12 @@ ServerInfo.prototype.getWell2 = function() {
 
 //------------------------------------------------------- Setters
 
-ServerInfo.prototype.setPaddle1 = function(paddle1Y) {
-	this.paddle1 = paddle1;
+ServerInfo.prototype.setPaddle1Y = function(paddle1Y) {
+	this.paddle1Y = paddle1Y;
 };
 
-ServerInfo.prototype.setPaddle2 = function(paddle2Y) {
-	this.paddle2 = paddle2;
+ServerInfo.prototype.setPaddle2Y = function(paddle2Y) {
+	this.paddle2Y = paddle2Y;
 };
 
 ServerInfo.prototype.setBall = function(ball) {
@@ -49,3 +49,5 @@ ServerInfo.prototype.setWell1 = function(well1) {
 ServerInfo.prototype.setWell2 = function(well2) {
 	this.well2 = well2;
 };
+
+module.exports = ServerInfo;

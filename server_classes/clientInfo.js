@@ -1,6 +1,5 @@
 ClientInfo = function() {
-	this.x = 0;
-	this.y = 0;
+	this.well;
 	this.clientNum;
 }; 
 
@@ -13,11 +12,11 @@ ClientInfo.prototype.getClientNum = function(){
 }
 
 ClientInfo.prototype.setWellX = function(x) {
-	this.well.setX(x);
+	this.well.setX = x;
 };
 
 ClientInfo.prototype.setWellY = function(y){
-	this.well.setY(y);
+	this.well.setY = y;
 };
 
 ClientInfo.prototype.setClientNum = function(num){
@@ -27,3 +26,4 @@ ClientInfo.prototype.setWell = function(well) {
 	this.well = well;
 };
 
+module.exports = ClientInfo;
