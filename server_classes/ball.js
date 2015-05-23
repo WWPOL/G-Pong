@@ -1,9 +1,13 @@
-Ball = function(x, y, radius, mass, movement) {
+var C = require("./collisions.js");
+
+Ball = function(x, y, radius, mass, movement, paddle1, paddle2) {
 	this.x = x;
 	this.y = y;
 	this.radius = radius;
 	this.mass = mass;
 	this.movement = movement;
+	this.paddle1 = paddle1;
+	this.paddle2 = paddle2;
 };
 
 Ball.prototype.getX = function() {
@@ -37,6 +41,13 @@ Ball.prototype.getMovement = function(){
 Ball.prototype.update = function(delta) {
 	this.x += this.movement.getX();
 	this.y += this.movement.getY();
+
+	if (C.collision(this, this.paddle1)) {
+		console.log("Your mom is fat");
+	}
+	if (C.collision(this, this.paddle2)) {
+		console.log("I love you");
+	}
 };
 
 module.exports = Ball;	

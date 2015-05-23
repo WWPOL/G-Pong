@@ -61,7 +61,9 @@ http.listen(7777, function(){
 	console.log("listening on port 7777");
 });
 
-var testBall = new Ball(50, 50, 10, 10, new Vector(1,0,null,null))
+var testPaddle1 = new Paddle(0);
+var testPaddle2 = new Paddle(1);
+var testBall = new Ball(50, 50, 10, 10, new Vector(5,0,null,null), testPaddle1, testPaddle2);
 var testPaddle1Y = 40;
 var testPaddle2Y = 40;
 var testWell1 = new Ball(90, 90, 20, 50, new Vector(0,0,null,null))
@@ -80,4 +82,3 @@ var update = function() {
 	sendToAll("serverInfo", serverInfo);	
 	setTimeout(update, 50);
 }
-
