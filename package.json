@@ -1,0 +1,10 @@
+{
+  "name": "G-Pong",
+  "version": "0.0.0",
+  "description": "Gravity pong.",
+  "dependencies": {
+    "debug": "^2.1.1",
+    "express": "^4.9.4",
+    "socket.io": "^1.1.0"
+  }
+}
