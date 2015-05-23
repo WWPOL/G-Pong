@@ -50,18 +50,6 @@ Ball.prototype.getMovement = function(){
 	return this.movement;
 };
 
-Ball.prototype.ballReset = function(){
-	this.x = (1280/2) - this.radius;
-	this.y = (720/2) - this.radius;
-	this.movement = new Vector(0,0,undefined,undefined);
-	sendToAll("countdown", undefined);
-	paused = true;
-	setTimeout(function(){
-		this.movement = new Vector(1,0,undefined,undefined);
-		paused = false;
-	}, 4000);
-}
-
 Ball.prototype.update = function(delta) {
 	if (C.collision(this, this.paddle1) && this.paddle1.canColide == true) {
 		this.movement.setX(-this.movement.getX());
@@ -85,16 +73,16 @@ Ball.prototype.update = function(delta) {
 	if(this.x < 0){
 		if(wall1Active){
 			serverInfo.score2++;
+			this.checkScores();
 		}
 		this.movement.setX(Math.abs(this.movement.getX()))
-		this.ballReset();
 	}
 	if(this.x + (2*this.radius) > 1280){
 		if(wall2Active){
 			serverInfo.score1++;
+			this.checkScores();
 		}
 		this.movement.setX(-Math.abs(this.movement.getX()))
-		this.ballReset();
 	}
 	if(this.y < 0){
 		this.movement.setY(Math.abs(this.movement.getY()))
@@ -105,14 +93,21 @@ Ball.prototype.update = function(delta) {
 
 	this.x += this.movement.getX();
 	this.y += this.movement.getY();
-
-	
 };
 
 app.use(express.static(__dirname + '/public'));
 app.get('/', function(req, res){
 	res.sendFile(__dirname + '/index.html');
 });
+
+Ball.prototype.checkScores = function() {
+	if (serverInfo.score1 > 10 && serverInfo.score1 - serverInfo.score2 > 1) {
+		
+	}
+	else if (serverInfo.score2 > 10 && serverInfo.score2 - serverInfo.score1 > 1) {
+
+	}
+};
 
 
 var users = [];
@@ -180,7 +175,6 @@ http.listen((process.env.PORT || 7777), function(){
 	console.log("listening on port 7777");
 });
 
-var paused = false;
 var testPaddle1 = new Paddle(0);
 var testPaddle2 = new Paddle(1);
 var testBall = new Ball((1280/2) - 10, (720/2) - 10, 10, 10, new Vector(0,0,null,null), testPaddle1, testPaddle2);
@@ -197,10 +191,9 @@ var sendToAll = function(type, obj) {
 }
 
 var update = function() {
-	if(paused == false){
-		performGravity(serverInfo.getBall(), serverInfo.getWell1());
-		performGravity(serverInfo.getBall(), serverInfo.getWell2());
-	}
+	performGravity(serverInfo.getBall(), serverInfo.getWell1());
+	performGravity(serverInfo.getBall(), serverInfo.getWell2());
+	
 	serverInfo.getBall().update();
 	sendToAll("serverInfo", serverInfo);	
 	setTimeout(update, 15);
