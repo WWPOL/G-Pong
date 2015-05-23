@@ -32,5 +32,5 @@ Ball.prototype.setRadius = function() {
 }
 
 Ball.prototype.render = function(){
-	gameContext.drawImage(this.image, this.getX(), this.getY(), this.radius * 2, this.radius * 2);
+	gameContext.drawImage(this.image, this.x, this.y, this.radius * 2, this.radius * 2);
 };

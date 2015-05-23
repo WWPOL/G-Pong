@@ -1,5 +1,6 @@
 ClientInfo = function() {
-	this.well;
+	this.x = 0;
+	this.y = 0;
 	this.clientNum;
 }; 
 

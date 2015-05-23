@@ -1,8 +1,9 @@
 gameCanvas.addEventListener('mousemove', function(e){
-	rect = gamecanvas.getBoundingClientRect(); //get bounding rectangle
+	rect = gameCanvas.getBoundingClientRect(); //get bounding rectangle
 	mouseX = e.clientX - rect.left;
 	mouseY = e.clientY - rect.top;
-	clientInfo.setWellX(mouseX);
-	clientInfo.setWellY(mouseY);
+	console.log(clientInfo);
+	clientInfo.x = mouseX;
+	clientInfo.y = mouseY;
 	socket.emit("clientInfo", clientInfo);
 });
