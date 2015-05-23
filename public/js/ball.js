@@ -16,14 +16,6 @@ Ball.prototype.getY = function(){
 	return this.y;
 };
 
-Ball.prototype.setX = function(x){
-	thix.x = x;
-}
-
-Ball.prototype.setY = function(y){
-	this.y = y;
-}
-
 Ball.prototype.getMass = function(){
 	return this.mass;
 };
