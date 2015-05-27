@@ -212,7 +212,11 @@ var sendToAll = function(type, obj) {
 
 var update = function() {
 	if(paused == false){
+		serverInfo.gravityVector1X = calculateGravityVector(serverInfo.getBall(), serverInfo.getWell1()).x;
+		serverInfo.gravityVector1Y = calculateGravityVector(serverInfo.getBall(), serverInfo.getWell1()).y;
 		performGravity(serverInfo.getBall(), serverInfo.getWell1());
+		serverInfo.gravityVector2X = calculateGravityVector(serverInfo.getBall(), serverInfo.getWell2()).x;
+		serverInfo.gravityVector2Y = calculateGravityVector(serverInfo.getBall(), serverInfo.getWell2()).y;
 		performGravity(serverInfo.getBall(), serverInfo.getWell2());
 	}
 	serverInfo.getBall().update();

@@ -6,6 +6,10 @@ ServerInfo = function(paddle1Y, paddle2Y, ball, well1, well2){
 	this.well2 = well2;
 	this.score1 = 0;
 	this.score2 = 0;
+	this.gravityVector1X;
+	this.gravityVector1Y;
+	this.gravityVector2X;
+	this.gravityVector2Y;
 }
 
 //--------------------------------------------------- Getters

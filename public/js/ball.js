@@ -6,6 +6,7 @@ Ball = function(radius) {
 	this.y;
 	this.radius = radius
 	this.lastHit = 0;
+	this.movement;
 };
 
 Ball.prototype.getX = function() {

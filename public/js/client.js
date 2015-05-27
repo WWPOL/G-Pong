@@ -14,6 +14,18 @@ background.src = "../assets/Background.png"
 
 var clientNum;
 
+var gravityVector1 = new Vector(0,0,undefined,undefined);
+var gravityVector2 = new Vector(0,0,undefined,undefined);
+
+var ballMovementX = 0;
+var ballMovementY = 0;
+
+var gravityVector1X = 0;
+var gravityVector1Y = 0;
+
+var gravityVector2X = 0;
+var gravityVector2Y = 0;
+
 var ball = new Ball(10);
 var score1 = 0;
 var score2 = 0;
@@ -26,6 +38,20 @@ var spectator = false;
 var countdown = false;
 
 //var game = new Game();
+
+var drawVector = function(vectorX, vectorY, ball, gravity){
+	gameContext.beginPath();
+	gameContext.moveTo(ball.x + ball.radius, ball.y + ball.radius);
+	if(gravity == false){
+		gameContext.lineTo(ball.x + ball.radius + (20 * vectorX), ball.y + ball.radius + (20 * vectorY));
+	}else{
+		gameContext.lineTo(ball.x + ball.radius + (200 * vectorX), ball.y + ball.radius + (200 * vectorY));
+	}
+	gameContext.strokeStyle="rgb(255,0,0)"
+	gameContext.lineWidth = 4;
+	gameContext.stroke();
+
+}
 
 var main = function(){
 	now = Date.now();
@@ -55,6 +81,12 @@ var render = function(){
 
 		paddle1.render();
 		paddle2.render();
+
+
+		drawVector(ballMovementX, ballMovementY, ball, false);
+
+		drawVector(gravityVector1X, gravityVector1Y, ball, true);
+		drawVector(gravityVector2X, gravityVector2Y, ball, true);
 
 		if(typeof serverInfo !== "undefined"){
 			ball.render();

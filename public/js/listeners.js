@@ -47,6 +47,17 @@ socket.on("serverInfo", function(info){
 
 	paddle1.y = info.paddle1Y;
 	paddle2.y = info.paddle2Y;
+
+	ballMovementX = info.ball.movement.x;
+	ballMovementY = info.ball.movement.y;
+
+	gravityVector1X = info.gravityVector1X;
+    gravityVector1Y = info.gravityVector1Y;
+
+    console.log(info.gravityVector1X)
+
+	gravityVector2X = info.gravityVector2X;
+	gravityVector2Y = info.gravityVector2Y;	
 });
 
 socket.on("winRedirect", function(){
