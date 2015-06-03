@@ -1,152 +1,76 @@
 var socket = io();
 
+var SCORE_X = 50;
+var SCORE_Y = 50;
+
 var gameCanvas = document.getElementById("c");
 var gameContext = gameCanvas.getContext("2d");
+
+var background = new Image();
+background.src = "../assets/background.png"
 
 var mouseX;
 var mouseY;
 
-var serverInfo;
-var clientInfo = new ClientInfo();
-
-var background = new Image();
-background.src = "../assets/Background.png"
-
 var clientNum;
-
-var ball = new Ball(10);
-var score1 = 0;
-var score2 = 0;
-var well1 = new Ball(20);
-var well2 = new Ball(20);
-var paddle1 = new Paddle(0)
-var paddle2 = new Paddle(1)
 var spectator = false;
 
-var countdown = false;
+var ball = new Ball(10);
+var well1 = new Ball(20);
+var well2 = new Ball(20);
+var paddle1 = new Paddle(0);
+var paddle2 = new Paddle(1);
+var countdown = 0;
 
-//var game = new Game();
+var score1 = 0;
+var score2 = 0;
+var ballController = -1;
 
-var main = function(){
-	now = Date.now();
-	delta = now - then;
+var encouragement = ["is adopted", "lives with his mom", "is a fucking loser", "eats boogers", "is a dweeb"];
+var encouragementIndex = 0;
 
-	update(delta/1000);
-	render();
+var main = function() {
+    now = Date.now();
+    delta = now - then;
 
-	requestAnimationFrame(main);
+    update(delta / 1000);
+    render();
+
+    requestAnimationFrame(main);
 }
 
 var update = function(delta) {
-
+    // Yeah we should probably put some stuff here or the server is going to light on fire
 }
 
-var alreadyDone = false;
+var render = function() {
+    gameContext.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
+    gameContext.drawImage(background, 0, 0)
 
-var render = function(){
-	if(countdown == false){
-		gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
-		gameContext.drawImage(background, 0, 0)
+    gameContext.font = "30px Ubuntu";
+    gameContext.fillStyle = "white";
 
-		gameContext.font = "30px Arial";
-		gameContext.fillStyle = "white";
-		gameContext.fillText("Player 1: " + score1, 50, 60);
-		gameContext.fillText("Player 2: " + score2, 1100, 60);
+    gameContext.fillText(score1, SCORE_X, SCORE_Y);
+    gameContext.fillText(score2, gameCanvas.width - SCORE_X, SCORE_Y);
 
-		paddle1.render();
-		paddle2.render();
+    paddle1.render();
+    paddle2.render();
 
-		if(typeof serverInfo !== "undefined"){
-			ball.render();
-			well1.lastHit = 0;
-			well1.render();
-			well2.lastHit = 1;
-			well2.render();
-		}
-	}else{
-		if(alreadyDone == false){
-			gameContext.drawImage(background, 0, 0)
-			alreadyDone = true;
-			gameContext.font = "30px Arial"
-			gameContext.drawImage(background, 0, 0)
+    well1.render(0);
+    well2.render(1);
+    ball.render(ballController);
 
-			gameContext.font = "30px Arial";
-			gameContext.fillStyle = "white";
-			gameContext.fillText("Player 1: " + score1, 50, 60);
-			gameContext.fillText("Player 2: " + score2, 1100, 60);
+    // We render the countdown information.
+    if (countdown !== 0) {
+        var textWidth = gameContext.measureText(countdown).width;
+        gameContext.fillText(countdown, (gameCanvas.width / 2) - (textWidth / 2), gameCanvas.height / 2);
 
-			paddle1.render();
-			paddle2.render();
-
-			if(typeof serverInfo !== "undefined"){
-				ball.render();
-				well1.lastHit = 0;
-				well1.render();
-				well2.lastHit = 1;
-				well2.render();
-			}
-			gameContext.fillText("3", 630, 360);	
-			setTimeout(function() {
-				gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
-				gameContext.drawImage(background, 0, 0)
-
-				gameContext.font = "30px Arial";
-				gameContext.fillStyle = "white";
-				gameContext.fillText("Player 1: " + score1, 50, 60);
-				gameContext.fillText("Player 2: " + score2, 1100, 60);
-
-				paddle1.render();
-				paddle2.render();
-
-				if(typeof serverInfo !== "undefined"){
-					ball.render();
-					well1.lastHit = 0;
-					well2.lastHit = 1; well2.render();
-				}
-				gameContext.fillText("2", 630, 360);
-				setTimeout(function() {
-					gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);
-					gameContext.drawImage(background, 0, 0)
-					gameContext.font = "30px Arial";
-					gameContext.fillStyle = "white";
-					gameContext.fillText("Player 1: " + score1, 50, 60);
-					gameContext.fillText("Player 2: " + score2, 1100, 60);
-
-					paddle1.render();
-					paddle2.render();
-
-					if(typeof serverInfo !== "undefined"){
-						ball.render();
-						well1.lastHit = 0;
-						well1.render();
-						well2.lastHit = 1; well2.render();
-					}
-					gameContext.fillText("1", 630, 360);
-					setTimeout(function() {
-						gameContext.clearRect(0,0,gameCanvas.width, gameCanvas.height);	
-						gameContext.drawImage(background, 0, 0)
-						gameContext.font = "30px Arial";
-						gameContext.fillStyle = "white";
-						gameContext.fillText("Player 1: " + score1, 50, 60);
-						gameContext.fillText("Player 2: " + score2, 1100, 60);
-
-						paddle1.render();
-						paddle2.render();
-
-						if(typeof serverInfo !== "undefined"){
-							ball.render();
-							well1.lastHit = 0;
-							well1.render();
-							well2.lastHit = 1; 
-							well2.render();
-						}
-						countdown = false;
-						alreadyDone = false;
-					}, 1000);
-				}, 1000);
-			}, 1000);	
-		}
-	}
+        if (score1 > score2) {
+            gameContext.fillText("red " + encouragement[encouragementIndex], 200, 200);
+        } else if (score2 > score1) {
+            gameContext.fillText("blue " + encouragement[encouragementIndex], 200, 200);
+        }
+    }
 }
 
 then = Date.now();

@@ -1,40 +1,28 @@
 Ball = function(radius) {
-	this.image = new Image();
-	this.image.src = "../assets/ball-blue.png"
+	this.imageNone = new Image();
+	this.imageNone.src = "../assets/ball-none.png";
 
-	this.x;
-	this.y;
-	this.radius = radius
-	this.lastHit = 0;
+    this.imageBlue = new Image();
+    this.imageBlue.src = "../assets/ball-blue.png"
+
+    this.imageRed = new Image();
+    this.imageRed.src = "../assets/ball-red.png";
+
+    this.x;
+    this.y;
+    this.radius = radius;
 };
 
-Ball.prototype.getX = function() {
-	return this.x;
-};
+Ball.prototype.render = function(index) {
+	var image = this.imageNone;
 
-Ball.prototype.getY = function(){
-	return this.y;
-};
+	if (index === -1) {
+		image = this.imageNone;
+	} else if (index === 0) {
+		image = this.imageBlue;
+	} else if (index === 1) {
+		image = this.imageRed;
+	}
 
-Ball.prototype.getRadius = function() {
-	return this.radius;
-}
-
-Ball.prototype.setX = function(x){
-	thix.x = x;
-}
-
-Ball.prototype.setY = function(y){
-	this.y = y;
-}
-
-Ball.prototype.setRadius = function() {
-	this.radius = radius;
-}
-
-Ball.prototype.render = function(){
-	if(this.lastHit == 0){this.image.src = "../assets/ball-blue.png"}
-	else{this.image.src = "../assets/ball-red.png"}
-
-	gameContext.drawImage(this.image, this.x, this.y, this.radius * 2, this.radius * 2);
+    gameContext.drawImage(image, this.x, this.y, this.radius * 2, this.radius * 2);
 };

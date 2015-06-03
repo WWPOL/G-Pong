@@ -1,6 +1,6 @@
 calculateGravityVector = function(obj1, obj2){
-	var distance = Math.sqrt((obj2.getX() - obj1.getX())*(obj2.getX() - obj1.getX())+(obj2.getY() - obj1.getY())*(obj2.getY() - obj1.getY()))
-	var force = 4 * (obj1.getMass() + obj2.getMass())/(obj1.getMass() + obj2.getMass() + (distance * distance)).toFixed(3);
+	var distance = Math.sqrt((obj2.x - obj1.x)*(obj2.x - obj1.x)+(obj2.y - obj1.y)*(obj2.y - obj1.y))
+	var force = 4 * (obj1.mass + obj2.mass)/(obj1.mass + obj2.mass + (distance * distance)).toFixed(3);
 	var angle = calculateAngleBetween(obj1, obj2).toFixed(3);
 	var vector = new Vector(undefined, undefined, angle, force);
 	if(force > 1){
@@ -15,7 +15,7 @@ performGravity = function(obj1, obj2){
 }
 
 calculateAngleBetween = function(obj1, obj2){
-	return Math.atan2((obj2.getY() - obj1.getY()), (obj2.getX() - obj1.getX()));
+	return Math.atan2(((obj2.y + obj2.height / 2) - (obj1.y + obj1.height / 2)), ((obj2.x + obj2.width / 2) - (obj1.x + obj1.width / 2)));
 }
 
 module.exports = {
