@@ -8,11 +8,17 @@ Particle = function(l){
 	this.color = -2
 }
 
+Particle.prototype.applyForce = function(f) {
+	this.acceleration.add(f);
+};
+
 Particle.prototype.update = function() {
+
 	this.velocity.add(this.acceleration);
 	this.location.add(this.velocity);
 	this.lifespan2 -= 2;
-	this.lifespan -= .005
+	this.lifespan -= .012
+	this.acceleration.mult(0);
 };
 
 Particle.prototype.render = function(color) {
@@ -41,3 +47,4 @@ Particle.prototype.isDead = function() {
 		return false;
 	}
 };
+
