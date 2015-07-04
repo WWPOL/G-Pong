@@ -7,7 +7,7 @@ var gameCanvas = document.getElementById("c");
 var gameContext = gameCanvas.getContext("2d");
 
 var background = new Image();
-background.src = "../assets/background.png"
+background.src = "../assets/background2.png"
 
 var mouseX;
 var mouseY;
