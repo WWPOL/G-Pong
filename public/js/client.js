@@ -7,7 +7,7 @@ var gameCanvas = document.getElementById("c");
 var gameContext = gameCanvas.getContext("2d");
 
 var background = new Image();
-background.src = "../assets/background.png"
+background.src = "../assets/background2.png"
 
 var mouseX;
 var mouseY;
@@ -26,7 +26,7 @@ var score1 = 0;
 var score2 = 0;
 var ballController = -1;
 
-var encouragement = ["is adopted", "lives with his mom", "is a fucking loser", "eats boogers", "is a dweeb"];
+var encouragement = ["is adopted", "lives with his mom", "is a loser", "eats boogers", "is a dweeb"];
 var encouragementIndex = 0;
 
 var main = function() {
@@ -39,13 +39,31 @@ var main = function() {
     requestAnimationFrame(main);
 }
 
+pArray = []
+
 var update = function(delta) {
     // Yeah we should probably put some stuff here or the server is going to light on fire
+    pArray.push(new Particle(new Vector2(ball.x + ball.radius, ball.y + ball.radius)));
+    pArray.forEach(function(p){
+        g1 = getGravityVector(p, well1);
+        g2 = getGravityVector(p, well2);
+        p.applyForce(g1);
+        p.applyForce(g2);
+        p.update();
+        if(p.isDead()){
+            index = pArray.indexOf(p);
+            pArray.splice(index,1)
+        }
+    });
 }
 
 var render = function() {
     gameContext.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
     gameContext.drawImage(background, 0, 0)
+
+    pArray.forEach(function(p){
+        p.render(ballController);
+    });
 
     gameContext.font = "30px Ubuntu";
     gameContext.fillStyle = "white";
@@ -71,6 +89,7 @@ var render = function() {
             gameContext.fillText("blue " + encouragement[encouragementIndex], 200, 200);
         }
     }
+
 }
 
 then = Date.now();
