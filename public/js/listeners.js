@@ -5,8 +5,7 @@ socket.on("clientNum", function(num) {
 });
 
 socket.on("start", function() {
-    alert("READY?");
-    socket.emit("ready");
+    state = "ready";
     main();
 });
 
@@ -48,6 +47,7 @@ socket.on("serverInfo", function(info) {
 
 socket.on("startCountdown", function() {
 	// We select a random phrase of encouragement.
+    state = "normal"
 	encouragementIndex = Math.floor(Math.random() * encouragement.length);
 });
 
