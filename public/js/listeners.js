@@ -5,9 +5,18 @@ socket.on("clientNum", function(num) {
 });
 
 socket.on("start", function() {
-    alert("READY?");
-    socket.emit("ready");
+    state = "readyUp";
     main();
+});
+
+socket.on("connect", function(){
+    state = "waiting";
+    main();
+});
+
+socket.on("disconnect", function(){
+    state = "waiting";
+    gameCanvas.style.cursor = "auto";
 });
 
 socket.on("update", function() {
@@ -48,6 +57,7 @@ socket.on("serverInfo", function(info) {
 
 socket.on("startCountdown", function() {
 	// We select a random phrase of encouragement.
+    state = "normal"
 	encouragementIndex = Math.floor(Math.random() * encouragement.length);
 });
 

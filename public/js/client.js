@@ -12,6 +12,8 @@ background.src = "../assets/background2.png"
 var mouseX;
 var mouseY;
 
+var state = "waiting";
+
 var clientNum;
 var spectator = false;
 
@@ -43,51 +45,22 @@ pArray = []
 
 var update = function(delta) {
     // Yeah we should probably put some stuff here or the server is going to light on fire
-    pArray.push(new Particle(new Vector2(ball.x + ball.radius, ball.y + ball.radius)));
-    pArray.forEach(function(p){
-        g1 = getGravityVector(p, well1);
-        g2 = getGravityVector(p, well2);
-        p.applyForce(g1);
-        p.applyForce(g2);
-        p.update();
-        if(p.isDead()){
-            index = pArray.indexOf(p);
-            pArray.splice(index,1)
-        }
-    });
+    if(state === "normal"){
+        normalUpdate();
+    }else if(state === "readyUp"){
+        readyUpUpdate();
+    }
 }
 
 var render = function() {
     gameContext.clearRect(0, 0, gameCanvas.width, gameCanvas.height);
     gameContext.drawImage(background, 0, 0)
-
-    pArray.forEach(function(p){
-        p.render(ballController);
-    });
-
-    gameContext.font = "30px Ubuntu";
-    gameContext.fillStyle = "white";
-
-    gameContext.fillText(score1, SCORE_X, SCORE_Y);
-    gameContext.fillText(score2, gameCanvas.width - SCORE_X, SCORE_Y);
-
-    paddle1.render();
-    paddle2.render();
-
-    well1.render(0);
-    well2.render(1);
-    ball.render(ballController);
-
-    // We render the countdown information.
-    if (countdown !== 0) {
-        var textWidth = gameContext.measureText(countdown).width;
-        gameContext.fillText(countdown, (gameCanvas.width / 2) - (textWidth / 2), gameCanvas.height / 2);
-
-        if (score1 > score2) {
-            gameContext.fillText("red " + encouragement[encouragementIndex], 200, 200);
-        } else if (score2 > score1) {
-            gameContext.fillText("blue " + encouragement[encouragementIndex], 200, 200);
-        }
+    if(state === "normal"){
+        normalRender();
+    }else if(state === "readyUp"){
+        readyUpRender();
+    }else if(state == "waiting"){
+        waitingRender();
     }
 
 }
