@@ -23,12 +23,17 @@ io.on("connection", function(socket) {
 
     socket.on("disconnect", function() {
         console.log("User " + socket.id + " left");
-        users.splice(users.indexOf(socket.id));
+        users.splice(users.indexOf(socket.id), 1);
         console.log(users.length + " users connected");
         readyCount = 0;
+        if(users.length < 2){
+            io.emit("disconnect");
+        }
     });
 
-    if (users.length == 2) { //when 2 players connect, start game
+    if (users.length == 1){
+        io.emit("connect")
+    }else if (users.length == 2) { //when 2 players connect, start game
         io.emit("start");
     }
 
@@ -39,7 +44,7 @@ io.on("connection", function(socket) {
             if (readyCount == 2) {
                 console.log("Starting game with users " + users);
 
-                game.startCountdown();
+                game.reset();
                 update(); // Begins the game loop.
             }
         }

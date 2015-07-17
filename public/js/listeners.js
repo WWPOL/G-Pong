@@ -5,8 +5,18 @@ socket.on("clientNum", function(num) {
 });
 
 socket.on("start", function() {
-    state = "ready";
+    state = "readyUp";
     main();
+});
+
+socket.on("connect", function(){
+    state = "waiting";
+    main();
+});
+
+socket.on("disconnect", function(){
+    state = "waiting";
+    gameCanvas.style.cursor = "auto";
 });
 
 socket.on("update", function() {

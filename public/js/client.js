@@ -12,6 +12,8 @@ background.src = "../assets/background2.png"
 var mouseX;
 var mouseY;
 
+var state = "waiting";
+
 var clientNum;
 var spectator = false;
 
@@ -45,8 +47,8 @@ var update = function(delta) {
     // Yeah we should probably put some stuff here or the server is going to light on fire
     if(state === "normal"){
         normalUpdate();
-    }else if(state === "ready"){
-        readyUpdate();
+    }else if(state === "readyUp"){
+        readyUpUpdate();
     }
 }
 
@@ -55,8 +57,8 @@ var render = function() {
     gameContext.drawImage(background, 0, 0)
     if(state === "normal"){
         normalRender();
-    }else if(state === "ready"){
-        readyRender();
+    }else if(state === "readyUp"){
+        readyUpRender();
     }else if(state == "waiting"){
         waitingRender();
     }

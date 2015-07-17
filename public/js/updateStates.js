@@ -13,6 +13,6 @@ normalUpdate = function(delta){
     });
 }
 
-readyUpdate = function(delta){
+readyUpUpdate = function(delta){
 	
 }

@@ -36,10 +36,13 @@ Game.prototype.update = function() {
 
 Game.prototype.reset = function() {
     this.ballController = -1;
-    this.ball.x = (GAME_WIDTH / 2) - (this.ball.width / 2);
+    this.ball.x  = (GAME_WIDTH / 2) - (this.ball.width / 2);
     this.ball.y = (GAME_HEIGHT / 2) - (this.ball.height / 2);
     this.ball.movement.x = 0;
     this.ball.movement.y = 0;
+
+    this.score1 = 0;
+    this.score2 = 0;
 
     this.startCountdown();
 };

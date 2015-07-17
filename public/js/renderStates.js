@@ -30,16 +30,18 @@ normalRender = function(){
     }
 }
 
-readyRender = function(){
+readyUpRender = function(){
 	gameContext.beginPath();
 	gameContext.lineWidth = "6";
 	gameContext.rect(gameCanvas.width/2 - 100, gameCanvas.height/2 - 50, 200, 100);
 	gameContext.stroke();
 	gameContext.font = "40px Arial";
+    gameContext.fillStyle = "black";
 	gameContext.fillText("Ready Up", gameCanvas.width/2 - 90, gameCanvas.height/2 + 20)
 }
 
 waitingRender = function(){
 	gameContext.font = "40px Arial";
+    gameContext.fillStyle = "black";
 	gameContext.fillText("Wating for Other Player", gameCanvas.width/2 - 200, gameCanvas.height/2 + 20)
 }
