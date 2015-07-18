@@ -30,9 +30,19 @@ normalRender = function(){
     }
 }
 
+mainMenuRender = function(){
+	gameContext.beginPath();
+	gameContext.rect(gameCanvas.width/2 - 100, gameCanvas.height/3, 200, 100);
+	gameContext.rect(gameCanvas.width/2 - 100, gameCanvas.height*2/3, 200, 100);
+	gameContext.stroke();
+	gameContext.font = "30px Arial";
+	gameContext.fillStyle = "black";
+	gameContext.fillText("Create Game", gameCanvas.width/2 - 90, gameCanvas.height/3 + 60);
+	gameContext.fillText("Join game", gameCanvas.width/2 - 65, gameCanvas.height*2/3 + 60);
+}
+
 readyUpRender = function(){
 	gameContext.beginPath();
-	gameContext.lineWidth = "6";
 	gameContext.rect(gameCanvas.width/2 - 100, gameCanvas.height/2 - 50, 200, 100);
 	gameContext.stroke();
 	gameContext.font = "40px Arial";
@@ -44,4 +54,22 @@ waitingRender = function(){
 	gameContext.font = "40px Arial";
     gameContext.fillStyle = "black";
 	gameContext.fillText("Wating for Other Player", gameCanvas.width/2 - 200, gameCanvas.height/2 + 20)
+}
+
+createMenuRender = function(){
+
+}
+
+joinMenuRender = function(){
+	gameContext.font = "30px Arial";
+	gameContext.fillStyle = "black";
+	gameContext.fillText("Enter in Game Code", gameCanvas.width/2 - 130, gameCanvas.height/3);
+
+
+	gameContext.fillText("Join Game", gameCanvas.width/2 - 70, gameCanvas.height*2/3 + 60);
+	gameContext.beginPath();
+	gameContext.rect(gameCanvas.width/2-100, gameCanvas.height*2/3, 200, 100);
+	gameContext.stroke();
+
+	var input = document.createElement("input");
 }

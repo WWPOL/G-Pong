@@ -59,8 +59,14 @@ var render = function() {
         normalRender();
     }else if(state === "readyUp"){
         readyUpRender();
-    }else if(state == "waiting"){
+    }else if(state === "waiting"){
         waitingRender();
+    }else if(state === "mainMenu"){
+        mainMenuRender();
+    }else if(state === "createMenu"){
+        createMenuRender();
+    }else if(state === "joinMenu"){
+        joinMenuRender();
     }
 
 }

@@ -23,6 +23,10 @@ gameCanvas.addEventListener('click', function(e) {
 		console.log("Clicked Ready!");
 		socket.emit("ready");
 		gameCanvas.style.cursor = "none";
-		state = "waiting"
+		state = "waiting";
+	}else if(state === "mainMenu" && clickX > gameCanvas.width/2-100 && clickX < gameCanvas.width + 100 && clickY > gameCanvas.height/3 && clickY < gameCanvas.height/3 + 100){
+		state = "createMenu";
+	}else if(state === "mainMenu" && clickX > gameCanvas.width/2-100 && clickX < gameCanvas.width + 100 && clickY > gameCanvas.height*2/3 && clickY < gameCanvas.height*2/3 + 100){
+		state = "joinMenu";
 	}
 }, false);

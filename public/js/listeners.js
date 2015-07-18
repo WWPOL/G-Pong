@@ -10,7 +10,7 @@ socket.on("start", function() {
 });
 
 socket.on("connect", function(){
-    state = "waiting";
+    state = "mainMenu";
     main();
 });
 
