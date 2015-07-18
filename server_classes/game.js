@@ -41,11 +41,13 @@ Game.prototype.reset = function() {
     this.ball.movement.x = 0;
     this.ball.movement.y = 0;
 
-    this.score1 = 0;
-    this.score2 = 0;
-
     this.startCountdown();
 };
+
+Game.prototype.resetScore = function(){
+    this.score1 = 0;
+    this.score2 = 0;
+}
 
 Game.prototype.paddleCollision = function(paddleIndex) {
     if (paddleIndex === 0) {

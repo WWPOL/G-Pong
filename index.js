@@ -45,6 +45,7 @@ io.on("connection", function(socket) {
                 console.log("Starting game with users " + users);
 
                 game.reset();
+                game.resetScore();
                 update(); // Begins the game loop.
             }
         }

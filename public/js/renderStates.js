@@ -32,7 +32,6 @@ normalRender = function(){
 
 readyUpRender = function(){
 	gameContext.beginPath();
-	gameContext.lineWidth = "6";
 	gameContext.rect(gameCanvas.width/2 - 100, gameCanvas.height/2 - 50, 200, 100);
 	gameContext.stroke();
 	gameContext.font = "40px Arial";
