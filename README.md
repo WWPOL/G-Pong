@@ -1,4 +1,4 @@
-# PROJECT: BAD PIRANHA (aka G-PONG)
+# PROJECT: BAD PIRANHA (aka G-Pong)
 Project for HackExeter Spring 2015
 
 Instructions
